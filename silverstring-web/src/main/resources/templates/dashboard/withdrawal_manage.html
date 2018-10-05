@@ -1,0 +1,252 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:mf="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!-- Coin tabs -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <input id="selectionCoin" type="hidden" th:value="${selectionCoin}">
+
+            <!--tab panes-->
+            <div class="tab-content mt-10px" id="myTabContent">
+                <!--Bitcoin tab-->
+                <div class="row">
+                    <div class="col-lg-3 border-right-1 border-bottom-1">
+                        <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                            <div class="row">
+                                <table class="table mb-0 coin-list-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.coin_name}"></th>
+                                            <th scope="col" colspan="2" th:utext="#{dashboard.withdrawal_manage.withdrawal.coin_balance}"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="" th:each="info : ${walletInfos.infos}">
+                                            <td class="fs-08 text-vl-center"><a href="#" th:onclick="'onWithdrawalTabChange(\'' + ${info.coin.name} + '\')'"><span class="text-dark text-bold" th:text="${info.coin.unit}"></span></a></td>
+                                            <td class="fs-08 text-vl-center">
+                                                <div th:if="${info.wallet.availableBalance} eq 0">
+                                                    <span class="text-dark text-bold" mf:decimal="${info.wallet.availableBalance}"></span>
+                                                </div>
+                                                <div th:unless="${info.wallet.availableBalance} eq 0">
+                                                    <span class="text-dark text-bold">0</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+                            <h4><span th:utext="#{dashboard.withdrawal_manage.withdrawal.title}"></span></h4>
+                            <div class="box-body">
+                                <div class="panel-body">
+                                    <div class="tab-content br-n pn">
+                                        <div class="tab-pane" th:each="info : ${walletInfos.infos}" th:id="'withdrawal-nav-content-' + ${info.coin.name}">
+                                            <div class="row">
+                                                <div class="col-lg-12 fs-08">
+                                                    <p th:utext="#{dashboard.withdrawal_manage.withdrawal.desc1(${info.coin.unit})}"></p>
+                                                    </h2>
+                                                </div>
+                                                <div class="col-lg-6 fs-08">
+                                                    <form th:id="'withdrawal' + ${info.coin.name} + 'FormId'" class="form-horizontal" role="form">
+                                                        <input type="hidden" name="coinName" class="form-control" th:value="${info.coin.name}">
+                                                        <input type="hidden" name="coinUnit" class="form-control" th:value="${info.coin.unit}">
+                                                        <input type="hidden" name="onceAmount" class="form-control" th:value="${info.level.onceAmount}">
+                                                        <input type="hidden" name="onedayAmount" class="form-control" th:value="${info.level.onedayAmount}">
+                                                        <input type="hidden" name="myLimitAmount" class="form-control" th:value="${info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance > 0 ? info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance: 0}">
+                                                        <input type="hidden" name="availableBalance" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.availableBalance,1,8,'POINT')}">
+                                                        <input type="hidden" name="minWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.coin.withdrawalMinAmount,1,8,'POINT')}">
+                                                        <input type="hidden" name="realWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.realWithdrawalAmount,1,8,'POINT')}">
+                                                        <input type="hidden" name="withdrawalFee" class="form-control" th:value="${#numbers.formatDecimal(info.withdrawalFee,1,8,'POINT')}">
+
+                                                        <div class="row rd-7 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc2}"></span></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <span class="font-weight-bold" mf:decimal="${info.wallet.availableBalance}"></span><span th:text="' ' + ${info.coin.unit}"></span>
+                                                            </div>
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc3}"></span></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <span class="font-weight-bold" mf:decimal="${info.wallet.coin.withdrawalMinAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>
+                                                            </div>
+
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc14}"></span></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <span class="font-weight-bold" mf:decimal="${info.realWithdrawalAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>
+                                                                <span style="margin-left: 20px" th:text="#{dashboard.withdrawal_manage.withdrawal.desc15}"></span><span mf:decimal="${info.withdrawalFee}"></span><span th:text="' ' + ${info.coin.unit}"></span>
+                                                            </div>
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc8}"></span></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <input class="form-control fs-08" type="text" name="address" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc9}">
+                                                            </div>
+
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc10}"></span></div>
+                                                            <div class="col-md-4 fs-08 mb-10px">
+                                                                <input class="form-control fs-08" type="number" th:id="${info.coin.name} + 'amount'" name="amount" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc11}">
+                                                            </div>
+                                                            <div class="col-md-4 fs-08 mb-10px">
+                                                                <!-- <span th:text="#{dashboard.withdrawal_manage.withdrawal.desc16}"></span> -->
+                                                            </div>
+
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc12}"></span></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <input class="form-control fs-08"  type="number" name="otp" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc13}">
+                                                            </div>
+                                                            <div class="col-md-4 fs-08 text-center mb-10px"></div>
+                                                            <div class="col-md-8 fs-08 mb-10px">
+                                                                <button type="button" class="btn btn-danger fs-1" th:onclick="'doWithdrawal(\'' + ${info.coin.name} + '\')'" th:utext="#{dashboard.withdrawal_manage.withdrawal.req.btn}"></button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <div class="rd-5 bg-white mb-md-30px mb-sm-30px mb-xs-30px">
+                                                        <div class="row">
+                                                            <table class="table mb-0" style="width: 360px; margin: 20px auto">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.header.column1}"></th>
+                                                                    <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.header.column2}"></th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <!--
+                                                                <tr>
+                                                                    <td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column1}"></td>
+                                                                    <td class="text-third-color fs-08" th:text="${info.level.onceAmount}"></td>
+                                                                </tr>
+                                                                -->
+                                                                <tr>
+                                                                    <td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column2}"></td>
+                                                                    <td class="text-third-color fs-08"><span mf:decimal="${info.level.onedayAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column3}"></td>
+                                                                    <td class="text-third-color fs-08">
+                                                                        <span mf:decimal="${info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance > 0 ? info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance : 0 }"></span>
+                                                                        <span th:text="' ' + ${info.coin.unit}"></span>
+                                                                    </td>
+                                                                </tr>
+
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px" style="margin-top: 10px">
+                            <h4><span th:utext="#{dashboard.withdrawal_manage.withdrawal.history.title}"></span></h4>
+                            <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.desc}"></span>
+                            <div class="row">
+                                <table class="table mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column1}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column2}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column3}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column4}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column5}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column6}"></th>
+                                        <th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.column7}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="withdrawalTransactionBodyId">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.withdrawal_manage.withdrawal.history.alert}"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--/bitcoin tab-->
+
+                <!--Ripple Tab-->
+            </div>
+            <!--/tab panes-->
+        </div>
+        <!--/tab panes-->
+        <!--/container-->
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'assets/dashboard/js/chartist.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/TransactionProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/WalletService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var walletService = new WalletService();
+        walletService.rendererWithdrawalTransactions($("#selectionCoin").val(), 0);
+
+        $("[id$='amount']").keyup(function(e) {
+            if(e.keyCode != 8) {
+                walletService.determine($(this).attr('id'));
+            }
+        });
+
+        function onWithdrawalTabChange(coin) {
+            $("#selectionCoin").val(coin);
+            walletService.rendererWithdrawalTransactions(coin, 0);
+             $("input[name=amount]").val("");
+             $("input[name=address]").val("");
+             $("input[name=otp]").val("");
+        }
+
+        function doWithdrawal(coin) {
+            walletService.doWithdrawal(coin);
+        }
+
+        function cancelWithdrawal(coin, transaction_id) {
+            walletService.onCancelWithdrawal(coin, transaction_id);
+        }
+    </script>
+</body>
+</html>

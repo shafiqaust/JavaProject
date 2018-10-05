@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- main script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="animate-in bg-gray-200" th:inline="text">
+    <div class="py-50px demo-multibackground bg-gray-200"
+         data-multibackground="debug"
+         data-multibackground-layer-0-type="image"
+         data-multibackground-layer-0-attachment="fixed"
+         data-multibackground-layer-0-url="assets/img/bt-bg.jpg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="rd-10 p-5 bg-white text-center big-shadow">
+                        <input id="msg" name="msg" type="hidden" th:value="${msg}">
+
+                        <h3><a class="navbar-brand d-inline-flex logo" href="#">DreamBox</a></h3>
+                        <div class="mt-2 mb-4 fs-0_5">
+                            <div th:text="#{email_search.comment.desc1}"></div><br/>
+                            <div th:text="#{email_search.comment.desc2}"></div><br/>
+                        </div>
+                        <form th:action="@{/user/doEmailSearch}" method="post">
+                            <input type="email" name="email" class="form-control mb-4 p-2" th:placeholder="#{email_search.input.msg}">
+                            <button class="btn-fill-color text-uppercase btn btn-block mb-4" type="submit" th:text="#{email_search.comment.btn}"></button>
+                        </form>
+
+                        <div class="w-100 clearfix my-5"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="'js/common/jquery.i18n.properties.js?dummy=' + ${version}"></script>
+    <script th:src="'js/lib/form-to-obj.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            utils.locale_init('[[${localeName}]]');
+
+            var msg = $("#msg").val();
+            if (msg == "succeed") {
+                alert(utils.locale_i18n('email_search.msg.succeed'));
+            } else if (msg == "invalid") {
+                alert(utils.locale_i18n('email_search.msg.invalid'));
+            }
+        });
+    </script>
+</body>
+</html>

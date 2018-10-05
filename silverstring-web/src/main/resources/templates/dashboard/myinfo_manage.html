@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!--
+       Coin tabs
+    -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <!--nav tabs-->
+
+            <div class="row">
+                <!--회원정보관리-->
+                <div class="col-lg-6">
+                    <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                        <h4><span th:utext="#{dashboard.myinfo_manage.password_change.title}"></span></h4>
+                        <div class="box-body">
+                            <div class="panel-body">
+                                <div class="tab-content br-n pn">
+                                    <div class="tab-pane active">
+                                        <div class="col-lg-12 fs-08">
+                                            <form id="myInfoFormId" class="form-horizontal" role="form" action="#">
+                                                <input type="hidden" name="coinName" class="form-control">
+                                                <input type="hidden" name="coinUnit" class="form-control">
+                                                <input type="hidden" name="onceAmount" class="form-control">
+                                                <input type="hidden" name="onedayAmount" class="form-control">
+                                                <input type="hidden" name="myLimitAmount" class="form-control">
+                                                <input type="hidden" name="availableBalance" class="form-control">
+                                                <input type="hidden" name="minWithdrawalAmount" class="form-control">
+
+                                                <div class="col-lg-12 fs-08">
+                                                    <p th:utext="#{dashboard.myinfo_manage.password_change.desc}"></p>
+                                                    </h2>
+                                                </div>
+
+                                                <div class="row rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                                    <div class="col-md-2 fs-08 text-left mb-10px"><span>Email</span></div>
+                                                    <div class="col-md-10 fs-08 mb-10px"><span class="text-success" th:text="${user.email}"></span></div>
+
+                                                    <div class="col-md-2 fs-08 text-left mb-10px"><span th:utext="#{dashboard.myinfo_manage.password_change.desc1}"></span></div>
+                                                    <div class="col-md-10 fs-08 mb-10px"><input class="form-control fs-08" type="password" name="password" th:placeholder="#{dashboard.myinfo_manage.password_change.desc2}"></div>
+
+                                                    <div class="col-md-2 fs-08 text-left mb-10px"><span th:utext="#{dashboard.myinfo_manage.password_change.desc3}"></span></div>
+                                                    <div class="col-md-10 fs-08 mb-10px"><input class="form-control fs-08" type="password" name="newPassword" th:placeholder="#{dashboard.myinfo_manage.password_change.desc4}"></div>
+
+                                                    <div class="col-md-2 fs-08 text-left mb-10px"><span th:utext="#{dashboard.myinfo_manage.password_change.desc5}"></span></div>
+                                                    <div class="col-md-10 fs-08 mb-10px"><input class="form-control fs-08" type="password" name="newPasswordRe" th:placeholder="#{dashboard.myinfo_manage.password_change.desc6}"></div>
+
+                                                    <div class="col-md-2 fs-08 text-left mb-10px"><span th:utext="#{dashboard.myinfo_manage.password_change.desc7}"></span></div>
+                                                    <div class="col-md-10 fs-08 mb-10px"><input class="form-control fs-08" type="number" name="otp" th:placeholder="#{dashboard.myinfo_manage.password_change.desc8}"></div>
+                                                </div>
+                                            </form>
+                                            <button type="button" class="btn btn-danger width-100" th:onclick="'onChangePasswordClick()'" th:utext="#{dashboard.myinfo_manage.password_change.req.btn}"></button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--회원탈퇴-->
+                <div class="col-lg-6">
+                    <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+                        <h4><span th:utext="#{dashboard.myinfo_manage.retire.title}"></span></h4>
+                        <div class="box-body">
+                            <div class="panel-body">
+                                <div class="tab-content br-n pn">
+                                    <div class="tab-pane active" id="deposit-nav-content-BITCOIN">
+                                        <form id="releaseFormId" class="form-horizontal" role="form" action="#">
+                                            <div class="col-md-12">
+                                                <p><span style="color:orange" th:utext="#{dashboard.myinfo_manage.retire.desc}"></span></p>
+                                                </h2>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="row rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                                    <div class="col-md-12 fs-08 mb-10px">
+                                                        <p th:utext="#{dashboard.myinfo_manage.retire.desc1}"></p><br>
+                                                        <p th:utext="#{dashboard.myinfo_manage.retire.desc2}"></p><br/>
+                                                        <p th:utext="#{dashboard.myinfo_manage.retire.desc3}"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                                    <div class="col-md-2 fs-08 text-left mb-10px">
+                                                        <span th:utext="#{dashboard.myinfo_manage.retire.desc4}"></span>
+                                                    </div>
+                                                    <div class="col-md-10 fs-08 mb-10px">
+                                                        <input class="form-control fs-08" type="number" name="otp" th:placeholder="#{dashboard.myinfo_manage.retire.desc5}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <button class="btn btn-danger width-100" th:onclick="'onReleaseMemberClick()'" th:utext="#{dashboard.myinfo_manage.retire.req.btn}"></button>
+                                    </div>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/container-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top">
+        <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </p>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/UserProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/UserService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var userService = new UserService();
+
+        function onChangePasswordClick() {
+            userService.changePassword();
+        }
+
+        function onReleaseMemberClick() {
+            userService.releaseMember();
+        }
+    </script>
+</body>
+</html>

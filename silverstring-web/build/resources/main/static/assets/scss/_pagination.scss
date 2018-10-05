@@ -1,0 +1,18 @@
+.pagination {
+	display: inline-flex;
+	li {
+		a {
+			color: $first-color;
+			&:hover,
+			&:focus {
+				color: $first-color;
+			}
+		}
+		&.active {
+			a.page-link {
+				background-color: $first-color;
+				border-color: $first-color;
+			}
+		}
+	}
+}

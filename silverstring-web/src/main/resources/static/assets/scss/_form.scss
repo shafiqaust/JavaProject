@@ -1,0 +1,63 @@
+/*=============================================*/
+/* Form */
+/*=============================================*/
+.form-control::-webkit-input-placeholder { color: #cfcfcf; }  /* WebKit, Blink, Edge */
+.form-control:-moz-placeholder 			 { color: #cfcfcf; }  /* Mozilla Firefox 4 to 18 */
+.form-control::-moz-placeholder 		 { color: #cfcfcf; }  /* Mozilla Firefox 19+ */
+.form-control:-ms-input-placeholder 	 { color: #cfcfcf; }  /* Internet Explorer 10-11 */
+.form-control::-ms-input-placeholder  	 { color: #cfcfcf; }  /* Microsoft Edge */
+.form-control {color: $text-color;}
+.form-group {position: relative}
+
+input,textarea,select {
+	&.form-control {
+		-webkit-border-radius: 5px;
+				border-radius: 5px;
+		&:focus,
+		&:active {
+			box-shadow: none;
+			-webkit-box-shadow: none;
+		}
+	}
+}
+
+.btn-circle-icon {
+	width: 50px;
+	height: 50px;
+	line-height: 25px;
+	text-align: center;
+	display: block;
+	float: none;
+	margin: auto;
+	background-color: $first-color;
+	color: #fff;
+	-webkit-border-radius: 100%;
+			border-radius: 100%;
+	cursor: pointer;
+	font-size: 1.5em;
+	padding: 0;
+	&:hover, &:focus {
+		background-color: $second-color !important;
+		outline: 0 none;
+		-webkit-transform: rotateZ(50deg);
+		     -o-transform: rotateZ(50deg);
+				transform: rotateZ(50deg);
+		margin-top: inherit !important;
+	}
+}
+
+.submit-inside {
+    .btn-circle-icon {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+		line-height: 0;
+    }
+}
+/*
+input,textarea,button {
+	&:hover,
+	&:focus {
+		outline: 0
+	}
+}*/

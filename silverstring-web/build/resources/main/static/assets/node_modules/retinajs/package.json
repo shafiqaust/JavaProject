@@ -1,0 +1,138 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "retinajs",
+        "scope": null,
+        "escapedName": "retinajs",
+        "name": "retinajs",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\wamp64\\www\\bcoin\\assets"
+    ]
+  ],
+  "_from": "retinajs@latest",
+  "_id": "retinajs@2.1.3",
+  "_inCache": true,
+  "_location": "/retinajs",
+  "_nodeVersion": "8.4.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/retinajs-2.1.3.tgz_1505202062002_0.03536982671357691"
+  },
+  "_npmUser": {
+    "name": "strues",
+    "email": "steven@strues.io"
+  },
+  "_npmVersion": "5.4.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "retinajs",
+    "scope": null,
+    "escapedName": "retinajs",
+    "name": "retinajs",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/retinajs/-/retinajs-2.1.3.tgz",
+  "_shasum": "1594594d799f9f59476cdfdbdef47ec0ae7ec509",
+  "_shrinkwrap": null,
+  "_spec": "retinajs",
+  "_where": "C:\\wamp64\\www\\bcoin\\assets",
+  "browser": "dist/retina.min.js",
+  "bugs": {
+    "url": "https://github.com/strues/retinajs/issues"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog-emoji"
+    }
+  },
+  "dependencies": {},
+  "description": "[![npm version](https://badge.fury.io/js/retinajs.png)](https://badge.fury.io/js/retinajs) [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier) [![Commitizen friendly](https://img.sh",
+  "devDependencies": {
+    "babel-jest": "^21.0.2",
+    "babel-preset-env": "^1.6.0",
+    "cross-env": "^5.0.5",
+    "cz-conventional-changelog-emoji": "^0.1.0",
+    "eslint": "^4.6.1",
+    "eslint-config-boldr": "^0.12.12",
+    "flow-bin": "^0.54.1",
+    "husky": "^0.14.3",
+    "jest": "^21.0.2",
+    "less": "^2.7.2",
+    "lint-staged": "^4.1.3",
+    "node-sass": "^4.5.3",
+    "prettier": "^1.6.1",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.49.3",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-babel-minify": "^3.1.2",
+    "rollup-plugin-filesize": "^1.4.2",
+    "rollup-plugin-license": "^0.5.0",
+    "sinon": "^3.2.1"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-ypjZKVntFXRwTVQaR1yyNiO0UsMOfHlAklQNlgnMJqTFuj+S/w3iYHOcFJRX39OYcB6LcYjN9zDBnwuOdxvwyA==",
+    "shasum": "1594594d799f9f59476cdfdbdef47ec0ae7ec509",
+    "tarball": "https://registry.npmjs.org/retinajs/-/retinajs-2.1.3.tgz"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "gitHead": "de7bced858ee4d9b6e5fbccfb56d7431a853b772",
+  "homepage": "https://github.com/strues/retinajs",
+  "keywords": [
+    "retina",
+    "images",
+    "@2x",
+    "@3x",
+    "retina.js"
+  ],
+  "licenses": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "yarn format",
+      "git add"
+    ]
+  },
+  "main": "dist/retina.js",
+  "maintainers": [
+    {
+      "name": "strues",
+      "email": "steven@strues.io"
+    },
+    {
+      "name": "jgnewman",
+      "email": "rescuecreative@gmail.com"
+    }
+  ],
+  "module": "dist/retina.esm.js",
+  "name": "retinajs",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strues/retinajs.git"
+  },
+  "scripts": {
+    "build": "rimraf dist && npm run build:js && npm run build:styles",
+    "build:js": "cross-env NODE_ENV=producion node build.js",
+    "build:styles": "cp src/_retina.sass dist && cp src/_retina.scss dist && cp src/retina.less dist && cp src/retina.styl dist",
+    "format": "prettier --single-quote=true --print-width=100 --jsx-bracket-same-line=false --trailing-comma=all --write \"src/**/*.js\"",
+    "precommit": "lint-staged",
+    "test": "jest",
+    "test-watch": "npm run test -- --watch"
+  },
+  "version": "2.1.3"
+}

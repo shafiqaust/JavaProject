@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.point-text {
+	color: #28a745;	
+}
+.text-success {
+	color: #28a745;	
+}
+.point-text > .big {
+	font-size: 30px;
+	font-weight: bold
+}
+.sell-text-c {
+	color: #0062cc;
+}
+.sell-text {
+	color: #0062cc;
+	background-color: #f5fbff;
+}
+.sell-text > .big {
+	font-size: 13px;
+	font-weight: bold;
+}
+.buy-text-c{
+	color: #ff0000;
+}
+.buy-text{
+	color: #ff0000;
+	background-color: #fff5f5;
+}
+.sell-text > .big {
+	font-size: 13px;
+	font-weight: bold;
+}
+.small-text {
+	font-size: 11px;
+	line-height: 20px;
+}
+
+.table2 {
+	width: 100%;
+	max-width: 100%;
+	margin-bottom: 1rem;
+	background-color: transparent;
+	border-top: 1px solid #f0f0f0;
+	border-bottom: 1px solid #f0f0f0
+}
+.table2 td, .table2 th {
+	font-size: 0.8em;
+	padding: 7px 0;
+	text-align: center;
+	vertical-align: top;
+	border-top: 1px solid #f0f0f0
+}
+.scroll-y{
+	overflow-y: scroll;
+	height:700px;
+}
+.scroll-hidden{
+	overflow: hidden;
+}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- main script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body class="animate-in bg-gray-200" th:inline="text">
+    <div class="py-50px demo-multibackground bg-gray-200"
+         data-multibackground="debug"
+         data-multibackground-layer-0-type="image"
+         data-multibackground-layer-0-attachment="fixed"
+         data-multibackground-layer-0-url="assets/img/bt-bg.jpg">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-5">
+                    <div class="rd-10 p-5 bg-white text-center big-shadow">
+
+                        <input id="msg" name="msg" type="hidden" th:value="${msg}">
+
+                        <h3><a class="navbar-brand d-inline-flex logo" href="#">
+                            DreamBox
+                        </a></h3>
+
+                        <div id="regFormArea">
+                            <form id="form" th:action="@{/user/doRegist}" method="post">
+                                <input type="email" class="form-control mb-4 p-2" th:placeholder="#{regist.email.title}" id="email" name="email">
+                                <input type="password" class="form-control mb-4" th:placeholder="#{regist.password.validate1}" input id="pwd" name="pwd" >
+                                <input type="password" class="form-control mb-4" th:placeholder="#{regist.password.validate2}" id="repwd" name="repwd" >
+                                <input id="fingerprint" name="fingerprint" class="form-control" type="hidden" required="">
+                            </form>
+                            <button class=" text-uppercase btn btn-block mb-4" id="registBtnId" type="submit" th:utext="#{login.regist.btn}"></button>
+
+                            <div class="w-100 clearfix my-5"></div>
+                            <div class="mt-5"><a href="/login"  th:utext="#{regist.already.ask}"></a></div>
+                        </div>
+                        <div id="regSuccArea">
+                            <span th:utext="#{landing.regist.msg.succeed}"></span>
+                            <div class="mt-5"><a href="/login"  th:utext="#{regist.already.ask}"></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="'js/common/jquery.i18n.properties.js?dummy=' + ${version}"></script>
+    <script th:src="'js/lib/form-to-obj.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            utils.locale_init('[[${localeName}]]');
+
+            $("#regFormArea").show();
+            $("#regSuccArea").hide();
+
+            var msg = $("#msg").val();
+            if (msg == "succeed") {
+                $("#regFormArea").hide();
+                $("#regSuccArea").show();
+            } else if (msg == "invalid") {
+                alert(utils.locale_i18n('landing.regist.msg.invalid'));
+            } else if (msg == "already") {
+                alert(utils.locale_i18n('landing.regist.msg.already'));
+            }
+
+            $("#registBtnId").click(function () {
+                var formData = formToObj(document.querySelector('form'));
+
+                if (utils.isEmpty(formData.email)) {
+                    alert(utils.locale_i18n('landing.regist.email.empty'));
+                    return false;
+                }
+
+                if (!utils.validateEmail(formData.email)) {
+                    alert(utils.locale_i18n('landing.regist.email.validate'));
+                    return false;
+                }
+
+                if (utils.isEmpty(formData.pwd) || formData.pwd.length < 8) {
+                    alert(utils.locale_i18n('landing.regist.pwd.validate'));
+                    return false;
+                }
+
+                if (formData.pwd != formData.repwd) {
+                    alert(utils.locale_i18n('landing.regist.pwd.validate'));
+                    return false;
+                }
+
+                document.getElementById('form').submit();
+            });
+        });
+    </script>
+</body>
+</html>

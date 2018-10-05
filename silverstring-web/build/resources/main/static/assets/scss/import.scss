@@ -1,0 +1,112 @@
+/*------------------------------------------------------------------
+[Master Stylesheet]
+Project:    Bcoin | Bitcoin Crypto Currency HTML Template
+Version:    1.0
+Author:     GoldenTemp team
+------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+[Table of contents]
+1. Google Fonts integration
+2. Bootstrap Main File
+3. Animate CSS Library 
+4. Fontawesome Library
+5. Owl Carousel 
+6. Counter Wheel
+7. Plyr Js
+8. Elements
+   8.1. variables
+   8.2. style
+   8.3. form
+   8.4. accordion
+   8.5. tabs
+   8.6. circles
+   8.7. header
+   8.8. pagination
+   8.9. blockquote
+   8.10. pricing
+   8.11. icon-box
+   8.12. slider-pagination
+   8.13. slider
+   8.14. menu
+   8.15. menu-canvas
+   8.16. heading
+   8.17. button
+   8.18. footer
+   8.19. page-title
+   8.20. counter
+   8.21. progress
+   8.22. contact
+   8.23. coin-tabs
+   8.24. call-action
+   8.25. side-column
+   8.26. service-box
+9. Smart CSS System
+   9.1. scs
+   9.2. scs_responsive
+10. Responsive options
+   10.1. responsive-lg
+   10.2. responsive-md
+   10.3. responsive-sm
+------------------------------------------------------------------*/
+
+
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+
+// Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Animate css
+@import "../node_modules/animate.css/animate.min.css";
+
+// Fontawsome
+@import "../node_modules/font-awesome/scss/font-awesome";
+
+// Owl carousel
+@import "../node_modules/owl.carousel/dist/assets/owl.carousel.min.css";
+
+// Countimator wheel
+@import "../js/plugins/countimator/css/jquery.countimator.wheel.min.css";
+
+// Plyr js
+@import "../node_modules/plyr/dist/plyr.css";
+
+
+// Elements
+@import "variables";
+@import "style";
+@import "form";
+@import "accordion";
+@import "tabs";
+@import "circles";
+@import "header";
+@import "pagination";
+@import "blockquote";
+@import "pricing";
+@import "icon-box";
+@import "slider-pagination";
+@import "slider";
+@import "menu";
+@import "menu-canvas";
+@import "heading";
+@import "button";
+@import "footer";
+@import "page-title";
+@import "counter";
+@import "progress";
+@import "contact";
+@import "coin-tabs";
+@import "call-action";
+@import "side-column";
+@import "service-box";
+
+// Smart CSS System
+@import "scs";
+@import "scs_responsive";
+
+// Responsive options (should be at bottom)
+@import "responsive-lg";
+@import "responsive-md";
+@import "responsive-sm";

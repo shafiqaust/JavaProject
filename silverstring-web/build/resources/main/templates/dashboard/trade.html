@@ -1,0 +1,594 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+    <style type="text/css">
+        .highcharts-candlestick-series .highcharts-point-up {
+            stroke: white;
+            fill: #f44271;
+        }
+
+        .highcharts-candlestick-series .highcharts-point-down {
+            stroke: white;
+            fill: #2b908f;
+        }
+    </style>
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!-- Coin tabs -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+
+            <input id="userId" type="hidden" th:value="${user.id}">
+            <input id="selectionCoin" type="hidden" th:value="${selectionCoin.name}">
+            <input id="baseCoin" type="hidden" th:value="${baseCoin.name}">
+            <input id="baseUrl" type="hidden" th:value="${baseurl}">
+
+            <!--tab panes-->
+            <div class="tab-content mt-10px" id="myTabContent">
+                <!--Bitcoin tab-->
+                <div class="row">
+                    <!-- left coins list -->
+                    <div class="col-lg-3 border-right-1 border-bottom-1">
+                        <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                            <div class="row">
+                                <table class="table mb-0 coin-list-table">
+                                    <thead>
+                                    <tr>
+                                        <th width="30%" scope="col" th:utext="#{trade.other.coin.sub.title1}"></th>
+                                        <th scope="col" th:utext="#{trade.other.coin.sub.title2}"></th>
+                                        <th scope="col" th:utext="#{trade.other.coin.sub.title3}"></th>
+                                        <th scope="col" th:utext="#{trade.other.coin.sub.title4}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="currentCoinBodyId">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- left coins list -->
+
+                    <!-- 코인 시세 -->
+                    <div class="col-lg-9 border-right-1 border-bottom-1">
+                        <div class="row">
+                            <div class="col-lg-12 border-right-1 border-bottom-1 mt-10px ml-20px">
+                                <h3><span th:utext="#{trade.tab.market.sel.title1}"></span><span th:text="${selectionCoin.unit}"></span> / <span th:text="${baseCoin.unit}"></span></h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!--거래현황-->
+                            <div class="col-lg-4 border-right-1 border-bottom-1">
+                                <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 600px">
+                                    <h4><span th:text="${selectionCoin.name}"></span>&nbsp;<span th:utext="#{trade.tab.market.sel.title2}"></span></h4>
+                                    <div class="box-body">
+                                        <!--시세 전일대비 -->
+                                        <div class="text-success text-lg-center mb-30px mt-20px point-text" style="margin-top:-10px;">
+                                            <h1><span id="coinAvgPriceId">-</span>
+                                                <span style="font-size:15pt;" id="coinAvgMarkAndPercentId"></span>
+                                            </h1>
+                                        </div>
+                                        <div class="table-responsive scroll-hidden" style="margin-top:-20px;">
+                                            <!-- 매도 총매도잔량 -->
+                                            <div>
+                                                <table class="table no-margin">
+                                                    <thead>
+                                                        <tr>
+                                                            <td align="center" width="50%" th:utext="#{trade.market.title.price}"></td>
+                                                            <td align="center" width="50%" th:utext="#{trade.market.title.amount}"></td>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </div>
+                                            <style>
+                                                .table-noline {border-top:0px; border-bottom:0px;}
+                                                .table-noline td {border:0px;}
+                                            </style>
+                                            <div style="margin-top:-10px; height:440px;">
+                                                <div style="height: 220px; position: relative;">
+                                                    <div style="position: absolute; bottom:0; width:100%;">
+                                                        <table class="table no-margin table-noline">
+                                                            <tbody id="sellHogaBodyId">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <!-- 최저가순 -->
+                                                <div style="height: 220px">
+                                                    <table class="table no-margin table-noline">
+                                                        <tbody id="buyHogaBodyId">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--24H 거래 그래프-->
+                            <div class="col-lg-8 border-bottom-1">
+                                <div class="bg-white p-30px rd-5 border-bottom-1" style="height: 600px">
+                                    <h4 th:utext="#{trade.home.transaction.titile1}"></h4>
+                                    <!--<span class="fs-08 mb-15px span-inline" th:utext="#{trade.home.transaction.title}"></span>-->
+                                    <div id="chart_container" style="height: 500px; min-width: 360px; background-color: #414141;text-align: center;vertical-align:middle;">
+                                        <h4 style="padding: 160px 0px;">
+                                            <block th:utext="#{trade.div3.title}"></block>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">&nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="bg-white p-30px rd-5 border-bottom-1 col-md-12">
+                                    <h4>
+                                        <center><span th:utext="#{trade.div5.title}"></span></center>
+                                    </h4>
+
+                                    <form id="buyFormId" class="form-horizontal" role="form">
+                                        <input type="hidden" name="orderType" class="form-control" value="BUY">
+                                        <input type="hidden" name="fromCoin" class="form-control" th:value="${baseCoin.name}">
+                                        <input type="hidden" name="toCoin" class="form-control" th:value="${wallet.coin.name}">
+                                        <input type="hidden" id="baseWalletAvailableBalanceFromBuy" name="baseWalletAvailableBalance" class="form-control" th:value="${baseWallet.availableBalance}">
+                                        <input type="hidden" id="walletAvailableBalanceFromBuy" name="walletAvailableBalance" class="form-control" th:value="${wallet.availableBalance}">
+                                        <input type="hidden" name="tradingFeePercent" class="form-control" th:value="${wallet.coin.tradingFeePercent}">
+
+                                        <div class="bg-white p-20px rd-5 mb-md-30px mb-sm-30px mb-xs-30px mt-10px">
+                                            <div class="row border-bottom-1">
+                                                <div class="col-lg-3 text-center fs-08">
+                                                    <p class="form-control-static">
+                                                        <span th:utext="#{trade.div5.title1}"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-9 fs-08">
+                                                    <p class="form-control-static" style="color:dodgerblue;font-weight: bold">
+                                                        <span id="baseWalletAvailableBalanceDisplayFromBuy"></span>
+                                                        <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row pb-15px border-bottom-1">
+                                                <div class="col-lg-8 fs-08 pt-10px">
+                                                    <input class="form-control fs-08" style="height: 35px" id="buyPrice" name="price" type="number" th:placeholder="#{trade.div5.title2.desc}">
+                                                </div>
+                                                <div class="col-lg-4 fs-08">
+                                                    <p class="form-control-static">
+                                                        <span class="ds-inline pt-2 mb-5px" style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                        <block th:utext="#{trade.div5.title10}"></block>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-12 fs-08">
+                                                    <button class="btn btn-danger waves-effect waves-light" onclick="onSettingMarketPrice('buy');return false;">
+                                                        <block th:utext="#{trade.div5.title2.btn}"></block>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row pb-15px">
+                                                <div class="col-lg-8 fs-08 pt-10px">
+                                                    <input class="form-control fs-08" id="buyAmount" name="amount" type="number" th:placeholder="#{trade.div5.title3.desc}">
+                                                </div>
+                                                <div class="col-lg-4 fs-08">
+                                                    <p class="form-control-static">
+                                                        <span class="ds-inline pt-2 mb-5px" style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                                        <block th:utext="#{trade.div5.title9}"></block>
+                                                    </p>
+                                                </div>
+                                                <!--
+                                                <div class="col-lg-12 fs-08">
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',10);return false;">10%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',20);return false;">20%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',30);return false;">30%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',40);return false;">40%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',50);return false;">50%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',60);return false;">60%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',70);return false;">70%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',80);return false;">80%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',90);return false;">90%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('buy',100);return false;">100%</button>
+                                                </div>
+                                                -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div8.title4}"></block>
+                                                </label>
+                                                <span name="balance" id="buyBalance" style="color:black;">0</span>
+                                                <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div5.title5}"></block>
+                                                </label>
+                                                <span style="color: black;" id="buyFee">0</span>
+                                                <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                <span style="color:gray" th:text="'(' + ${wallet.coin.tradingFeePercent} + '%)'"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div5.title4}"></block>
+                                                </label>
+                                                <span name="totalBalance" id="buyTotalBalance" style="color:black">0</span>
+                                                <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div5.title11}"></block>
+                                                </label>
+                                                <span style="color:black" mf:decimal="${baseWallet.coin.tradingMinAmount}"></span>
+                                                <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                /
+                                                <span style="color:black" mf:decimal="${wallet.coin.tradingMinAmount}"></span>
+                                                <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <span class="btn btn-danger waves-effect waves-light " style="width: 100%" onclick="onReqOrderClick('buy');">
+                                                    <block th:utext="#{trade.div5.title7.btn}"></block>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- 판매 -->
+                            <div class="col-lg-6">
+                                <div class="bg-white p-30px rd-5 border-bottom-1 col-md-12">
+                                    <h4>
+                                        <center><span th:utext="#{trade.div8.title}"></span></center>
+                                    </h4>
+                                    <form id="sellFormId" class="form-horizontal" role="form">
+                                        <input type="hidden" name="orderType" class="form-control" value="SELL">
+                                        <input type="hidden" name="fromCoin" class="form-control" th:value="${wallet.coin.name}">
+                                        <input type="hidden" name="toCoin" class="form-control" th:value="${baseCoin.name}">
+                                        <input type="hidden" id="baseWalletAvailableBalanceFromSell" name="baseWalletAvailableBalance" class="form-control" th:value="${baseWallet.availableBalance}">
+                                        <input type="hidden" id="walletAvailableBalanceFromSell" name="walletAvailableBalance" class="form-control" th:value="${wallet.availableBalance}">
+                                        <input type="hidden" name="tradingFeePercent" class="form-control" th:value="${baseWallet.coin.tradingFeePercent}">
+
+                                        <div class="bg-white p-20px rd-5 mb-md-30px mb-sm-30px mb-xs-30px mt-10px">
+                                            <div class="row border-bottom-1">
+                                                <div class="col-lg-3 text-center fs-08">
+                                                    <p class="form-control-static">
+                                                        <span th:utext="#{trade.div5.title1}"></span>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-9 fs-08">
+                                                    <p class="form-control-static" style="color:dodgerblue;font-weight: bold">
+                                                        <span id="walletAvailableBalanceDisplayFromSell"></span>
+                                                        <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="row pb-15px border-bottom-1">
+                                                <div class="col-lg-8 fs-08 pt-10px">
+                                                    <input class="form-control fs-08" style="height: 35px" id="sellPrice" name="price" type="number" th:placeholder="#{trade.div8.title2.desc}">
+                                                </div>
+                                                <div class="col-lg-4 fs-08">
+                                                    <p class="form-control-static">
+                                                        <span class="ds-inline pt-2 mb-5px" style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                        <block th:utext="#{trade.div8.title10}"></block>
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-12 fs-08">
+                                                    <button class="btn btn-success waves-effect waves-light" onclick="onSettingMarketPrice('sell');return false;">
+                                                        <block th:utext="#{trade.div8.title2.btn}"></block>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row pb-15px">
+                                                <div class="col-lg-8 fs-08 pt-10px">
+                                                    <input class="form-control fs-08" id="sellAmount" name="amount" type="number" th:placeholder="#{trade.div8.title3.desc}">
+                                                </div>
+                                                <div class="col-lg-4 fs-08">
+                                                    <p class="form-control-static">
+                                                        <span class="ds-inline pt-2 mb-5px" style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                                        <block th:utext="#{trade.div8.title9}"></block>
+                                                    </p>
+                                                </div>
+                                                <!--
+                                                <div class="col-lg-12 fs-08">
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',10);return false;">10%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',20);return false;">20%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',30);return false;">30%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',40);return false;">40%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',50);return false;">50%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',60);return false;">60%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',70);return false;">70%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',80);return false;">80%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',90);return false;">90%</button>
+                                                    <button class="btn waves-effect waves-light btn-xs mb-5px fs-08" onclick="onSettingMarketAmount('sell',100);return false;">100%</button>
+                                                </div>
+                                                -->
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div8.title4}"></block>
+                                                </label>
+                                                <span name="balance" id="sellBalance" style="color:black">0</span>
+                                                <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div8.title5}"></block>
+                                                </label>
+                                                <span style="color: black" id="sellFee">0</span>
+                                                <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                                <span style="color:gray" th:text="'(' + ${wallet.coin.tradingFeePercent} + '%)'"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div5.title4}"></block>
+                                                </label>
+                                                <span name="totalBalance" id="sellTotalBalance" style="color:black">0</span>
+                                                <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="col-lg-3 fs-08">
+                                                    <block th:utext="#{trade.div5.title11}"></block>
+                                                </label>
+                                                <span style="color:black" mf:decimal="${baseWallet.coin.tradingMinAmount}"></span>
+                                                <span style="color:gray" th:text="${baseWallet.coin.unit}"></span>
+                                                /
+                                                <span style="color:black" mf:decimal="${wallet.coin.tradingMinAmount}"></span>
+                                                <span style="color:gray" th:text="${wallet.coin.unit}"></span>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <span class="btn btn-success waves-effect waves-light " style="width: 100%" onclick="onReqOrderClick('sell');">
+                                                    <block th:utext="#{trade.div8.title7.btn}"></block>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="w-100 my-15px"></div>
+                            <div class="col-lg-12">
+                                <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                    <h4 th:utext="#{trade.sign.subject.title1}"></h4>
+                                    <div class="row">
+                                        <table id="datatable-keytable" class="table mb-0" role="grid" aria-describedby="datatable-keytable_info" style="position: relative;">
+                                            <thead>
+                                            <tr role="row" bgcolor="#faebd7">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="color:gray;width: 30%;">
+                                                    <block th:utext="#{trade.div4.column1}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 30%;">
+                                                    <block th:utext="#{trade.div4.column2}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 20%;">
+                                                    <block th:utext="#{trade.div4.column3}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 20%;">
+                                                    <block th:utext="#{trade.div4.column4}"></block>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="marketHistoryBodyId">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="w-100 my-15px"></div>
+                            <div class="col-lg-12">
+                                <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                    <h4 th:utext="#{trade.sign.subject.title2}"></h4>
+                                    <div class="row">
+                                        <table id="datatable-keytable" class="table mb-0" role="grid" aria-describedby="datatable-keytable_info" style="position: relative;">
+                                            <thead>
+                                            <tr role="row" bgcolor="#faebd7">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="color:gray;width: 20%;">
+                                                    <block th:utext="#{trade.div4.column1}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column2}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column3}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column4}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column6}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column7}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column5}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column9}"></block>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 10%;">
+                                                    <block th:utext="#{trade.div4.column8}"></block>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="myHistoryBodyId">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="w-100 my-15px"></div>
+                            <div class="col-lg-12">
+                                <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                    <h4 th:utext="#{trade.div9.title}"></h4>
+                                    <div class="row">
+                                        <table id="datatable-keytable" class="table mb-0" role="grid" aria-describedby="datatable-keytable_info" style="position: relative;">
+                                            <thead>
+                                            <tr role="row" bgcolor="#faebd7">
+                                                <th class="sorting_asc" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="color:gray;width: 20%;"><block th:utext="#{trade.div9.column1}"></block></th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;"><block th:utext="#{trade.div9.column2}"></block></th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 10%;"><block th:utext="#{trade.div9.column3}"></block></th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="color:gray;width: 20%;"><block th:utext="#{trade.div9.column4}"></block></th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 20%;"><block th:utext="#{trade.div9.column5}"></block></th>
+                                                <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="color:gray;width: 20%;"><block th:utext="#{trade.div9.column6}"></block></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody id="myOrderBodyId">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 코인시세 -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+
+    <!--Go to top-->
+    <p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+    <script th:src="'js/chart/stock_chart.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/CommonProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/TradeProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/CommonService.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/DashboardService.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/TradeService.js?dummy=' + ${version}"></script>
+    <script th:src="'js/handler/WebsockHandler.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var baseCoin = $("#baseCoin").val();
+        var selectionCoin = $("#selectionCoin").val();
+
+        var tradeService = new TradeService();
+        var websockHandler = new WebsockHandler();
+        websockHandler.connect();
+
+        function onSettingMarketPrice(type) {
+            var price = $("#coinAvgPriceId").html();
+            $("#" + type + "Price").val(price);
+            tradeService.determine(type, 0);
+        }
+
+        /**
+        function onSettingMarketAmount(type, percent) {
+            tradeService.determine(type, percent);
+        }
+        */
+
+        // 거래취소
+        function cancelOrder(orderId) {
+            tradeService.cancelOrder(orderId);
+        }
+
+        // 거래요청
+        function onReqOrderClick(type) {
+            tradeService.determine(type, 0);
+            tradeService.reqOrder(type);
+        }
+
+        $("#buyPrice").keyup(function(e) {
+            if(e.keyCode != 8) {
+                tradeService.determine("buy", 0);
+            }
+        });
+
+        $("#buyAmount").keyup(function(e) {
+            if(e.keyCode == 13) {
+                return;
+            }
+
+            if(e.keyCode != 8) {
+                tradeService.determine("buy", 0);
+            }
+        });
+
+        $("#sellPrice").keyup(function(e) {
+            if(e.keyCode != 8) {
+                tradeService.determine("sell", 0);
+            }
+        });
+
+        $("#sellAmount").keyup(function(e) {
+            if(e.keyCode == 13) {
+                return;
+            }
+
+            if(e.keyCode != 8) {
+                tradeService.determine("sell", 0);
+            }
+        });
+
+        function init() {
+            $("#" + selectionCoin + "TabId").attr("class", "current");
+
+            tradeService.rendererCategoriedCurrentCoinInfos(baseCoin);
+            tradeService.rendererCoinAvgPrice(selectionCoin, baseCoin); //coinAvgMarkAndPercentId
+            tradeService.rendererMyWalletInfo(); // myWalletInfoBodyId
+            tradeService.rendererHogaOrders(selectionCoin, baseCoin, 6); //buyHogaBodyId,sellHogaBodyId
+            tradeService.rendererMarketHistoryOrders(selectionCoin, baseCoin, 10); //marketHistoryBodyId
+            tradeService.rendererMyHistoryOrders(selectionCoin, baseCoin, 0, 10); //myHistoryBodyId
+            tradeService.rendererMyOrders(selectionCoin, baseCoin, 0); //myOrderBodyId
+
+            $("#buyPrice").val(0);
+            $("#buyAmount").val(0);
+            $("#sellPrice").val(0);
+            $("#sellAmount").val(0);
+        }
+
+        init();
+    </script>
+</body>
+</html>

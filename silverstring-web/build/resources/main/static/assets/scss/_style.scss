@@ -1,0 +1,185 @@
+/*=============*/
+/* body - body fading transition */
+/*=============*/
+body {
+	color: #888;
+	font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+	overflow-x: hidden;
+	&.animate-in {
+		-webkit-animation: fadeIn 0.5s ease-in;
+			 -o-animation: fadeIn 0.5s ease-in;
+				animation: fadeIn 0.5s ease-in;
+	}
+	&.animate-out {
+		-webkit-transition: opacity 0.5s;
+			 -o-transition: opacity 0.5s;
+				transition: opacity 0.5s;
+		opacity: 0;
+	}
+	@-webkit-keyframes fadeIn {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+	}
+	@keyframes fadeIn {
+		from { opacity: 0; }
+		to   { opacity: 1; }
+	}
+}
+
+
+/*=============*/
+/* Img */
+/*=============*/
+img { max-width: 100%; }
+
+
+/*=============*/
+/* Main classes */
+/*=============*/
+.text-color 	          { color: $text-color; }
+.text-first-color         { color: $first-color !important;}
+.text-second-color        { color: $second-color !important;}
+.text-third-color         { color: $third-color !important;}
+.text-darken-first-color  { color: $darken-first-color !important;}
+.text-darken-second-color { color: $darken-second-color !important;}
+.text-darken-third-color  { color: $darken-third-color !important;}
+.bg-first-color           { background-color: $first-color !important;}
+.bg-second-color          { background-color: $second-color !important;}
+.bg-third-color           { background-color: $third-color !important;}
+.bg-darken-first-color    { background-color: $darken-first-color !important;}
+.bg-darken-second-color   { background-color: $darken-second-color !important;}
+.bg-darken-third-color    { background-color: $darken-third-color !important;}
+
+
+/*=============*/
+/* Links */
+/*=============*/
+a {
+	color: $first-color;
+	opacity: 1;
+	@include transition(0.8);
+	&:hover,
+	&:focus,
+	&:active {
+		opacity: .8;
+		text-decoration: none;
+		color: inherit;
+	}
+}
+
+
+/*=============*/
+/* Breadcrumb */
+/*=============*/
+.breadcrumb {
+	justify-content: center;
+}
+
+
+/*=============*/
+/* Rotating img in banner */
+/*=============*/
+.rotate-img {
+	position: absolute;
+	right: -10%;
+	top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+	-webkit-animation: rotation 100s infinite linear;
+	animation: rotation 100s infinite linear;
+}
+@-webkit-keyframes rotation {
+	from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+	to {-webkit-transform: rotate(359deg);transform: rotate(359deg);}
+}
+
+
+/*=============*/
+/*Overlay color*/
+/*=============*/
+.bg-overlay {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: -100%;
+}
+.bg-alpha3-first-color	{background-color: rgba($first-color,   .3) !important}
+.bg-alpha5-first-color	{background-color: rgba($first-color,   .5) !important}
+.bg-alpha7-first-color	{background-color: rgba($first-color,   .7) !important}
+.bg-alpha9-first-color	{background-color: rgba($first-color,   .9) !important}
+.bg-alpha3-second-color	{background-color: rgba($second-color,   .3) !important}
+.bg-alpha5-second-color	{background-color: rgba($second-color,   .5) !important}
+.bg-alpha7-second-color	{background-color: rgba($second-color,   .7) !important}
+.bg-alpha9-second-color	{background-color: rgba($second-color,   .9) !important}
+.bg-alpha3-third-color	{background-color: rgba($third-color,   .3) !important}
+.bg-alpha5-third-color	{background-color: rgba($third-color,   .5) !important}
+.bg-alpha7-third-color	{background-color: rgba($third-color,   .7) !important}
+.bg-alpha9-third-color	{background-color: rgba($third-color,   .9) !important}
+
+/*=============*/
+/*Custom section*/
+/*=============*/
+.custom-section {
+	width: 100%;
+	transform: translateY(50%);
+    position: absolute;
+    bottom: 0;
+	right: 0;
+    left: 0;
+	margin: auto;
+    z-index: 1000;
+}
+
+/*=============*/
+/* Plyr - media player */
+/*=============*/
+.plyr {
+	@include radius(7px);
+	.plyr__play-large {
+		@include transition(.5s);
+		padding: 30px;
+		border: none;
+		background-color: $first-color;
+		cursor: pointer;
+	}
+	&:hover {
+		.plyr__play-large {
+			margin-top: -5px;
+			box-shadow: 0 0 30px 5px #333;
+			-webkit-box-shadow: 0 0 30px 5px #333;
+		}
+	}
+}
+
+
+/*=============*/
+/*Scroll to top*/
+/*=============*/
+#back-top {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	z-index: 999;
+	a {
+		opacity: 0.6;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		display: block;
+		text-align: center;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: #fff;
+		background-color: $second-color;
+		font-size: 1.2em;
+		@include transition(1s);
+		@include radius(5px);
+		&:hover {
+			opacity: 0.8;
+		}
+	}
+}

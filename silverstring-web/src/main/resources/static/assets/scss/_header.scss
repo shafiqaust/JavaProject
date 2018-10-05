@@ -1,0 +1,77 @@
+/*=============================================*/
+/* Header 1 */
+/*=============================================*/
+header {
+	z-index: 10 !important;
+	@include transition(0.3);
+	
+	/*Logo*/
+    .logo {
+		img {
+            vertical-align: baseline; 
+            max-width: inherit
+        }
+	}
+	
+	/*Top bar*/
+	.top-bar {
+		.select-currency {
+			position: relative;
+			background: $third-color url(../img/icon/select-bg.png) no-repeat 90% center;
+			overflow: hidden;
+			select {
+				padding-left: 0;
+				background-color: transparent;
+				border-color: $third-color;
+				width: calc(100% + 20px);
+			}
+		}
+	}
+		
+	/* Search - Account */
+	.search-bar, .account-bar {
+		padding: 25px 15px;
+		color: $third-color;
+		padding-right: .8rem;
+		padding-left: .8rem;
+		font-weight: 700;
+		font-size: 16px;
+		cursor: pointer;
+		.dropdown-menu {
+			width: 550px;
+			&::after {
+				display: block;
+				position: absolute;
+				content: "";
+				left: 20px;
+				top: -6px;
+				width: 10px;
+				height: 10px;
+				transform: rotate(-135deg);
+				-webkit-transform: rotate(-135deg);
+				-moz-transform: rotate(-135deg);
+				-o-transform: rotate(-135deg);
+				-ms-transform: rotate(-135deg);
+				border-right: 1px solid rgba(0,0,0,.15);
+				border-bottom: 1px solid rgba(0,0,0,.15);
+				background-color: #fff;
+			}
+		}
+		.dropdown-toggle::after {
+			display: none;
+		}	
+	}
+	.search-bar .dropdown-menu {
+		width: 300px
+	}
+	
+ 	/*if sticky*/
+	&.sticky {
+		background-color: rgba(28, 28, 28, 0.8) !important;
+		nav.navbar ul.navbar-nav > li a.nav-link,
+		button.ser-input {
+			color: #fff;
+		}
+	}
+	
+}/*end Header*/

@@ -1,0 +1,32 @@
+/*=============================================*/
+/* Tabs */
+/*=============================================*/
+.tab-st-1 {
+	.nav-tabs .nav-link {
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		padding: 15px 20px;
+		color: #1c1c1c;
+	}
+	.tab-content {
+		padding: 30px;
+		border: 1px solid #ddd;
+		border-top: none;
+	}
+}
+.tab-st-2 {
+	.nav-tabs .nav-link {
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		padding: 15px 20px;
+		color: #1c1c1c;
+		&.active {
+			border-top: 2px solid $first-color;
+		}
+	}
+	.tab-content {
+		padding: 30px;
+		border: 1px solid #ddd;
+		border-top: none;
+	}
+}

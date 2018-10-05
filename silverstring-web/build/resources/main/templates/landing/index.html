@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- main script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container-fluid container-fluid_plain">
+        <div class="row no-gutters">
+            <div class="col-lg-12">
+                <input id="msg" name="msg" type="hidden" th:value="${msg}">
+                <input id="otpStatus" type="hidden" name="otpStatus"/>
+                <div class="header__box">
+                    <form class="form" id="loginForm" th:action="@{${baseUrl} + '/j_spring_security_check'}" method="post">
+                        <div class="form__case">
+                            <img src="assets/img/logo.png" alt="" class="form__logo">
+                            <h1 class="form__title">
+                                <span>Dream</span> box
+                            </h1>
+                        </div>
+                        <p class="form__text">
+                            Welcome back! Please login to your account
+                        </p>
+                        <div class="form__dom">
+                            <input type="text" id="email" name="email"  class="form__input" placeholder="Email">
+                            <input type="password" id="pwd" name="pwd" class="form__input"  placeholder="Password">
+                            <div class="form__box">
+                                <div class="form__checked">
+                                    <input type="checkbox" class="form__check" id="first" name="check[]" value="Remember me">
+                                    <p class="form__word">
+                                        Remember me
+                                    </p>
+                                </div>
+                                <a href="#" class="form__link">
+                                    Forgot Password
+                                </a>
+                            </div>
+                            <div id="otpArea" class="col-lg-12 form-check mb-4 float-left " style="display:none">
+                                <span th:utext="#{login.otp.desc}"></span>
+                                <input type='text' class="form-control mb-4" placeholder="Google Authenticator Code" name="optcode"/>
+                            </div>
+                            <div class="form__block">
+                                <button id="loginBtnId" class="form__btn form__btn_b" style="cursor:pointer" type="button" th:utext="#{login.btn}"></button>
+
+                                <a href="/regist" style="cursor:pointer" class="form__btn">
+                                    Sign up
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript">
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
+
+        $(document).ajaxSend(function (e, xhr, options) {
+            xhr.setRequestHeader (header, token);
+        });
+    </script>
+
+    <script th:src="'js/common/jquery.i18n.properties.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/lib/form-to-obj.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/UserProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/UserService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            utils.locale_init('[[${localeName}]]');
+
+            var userService = new UserService();
+
+            $("#otpArea").css("display", "none");
+
+            var msg = $("#msg").val();
+            if (msg == "invalid") {
+                alert(utils.locale_i18n('landing.login.msg.none'));
+            }
+
+            $("#loginBtnId").click(function () {
+                var formData = formToObj(document.querySelector('form'));
+
+                if (utils.isEmpty(formData.email)) {
+                    alert(utils.locale_i18n('landing.login.input.fail'));
+                    return false;
+                }
+
+                if (!utils.validateEmail(formData.email)) {
+                    alert(utils.locale_i18n('landing.login.input.fail'));
+                    return false;
+                }
+
+                if (utils.isEmpty(formData.pwd) || formData.pwd.length < 8) {
+                    alert(utils.locale_i18n('landing.login.input.fail'));
+                    return false;
+                }
+
+                userService.getIsOtpUser($("#email").val());
+                if($("#otpStatus").val() == "C") {
+                    if($("#otpArea").css("display") == 'none') {
+                        $("#idPassArea").css("display", "none");
+                        $("#otpArea").css("display", "block");
+                    } else {
+                        if (utils.isEmpty(formData.optcode)) {
+                            alert(utils.locale_i18n('landing.login.input.fail'));
+                            return false;
+                        } else {
+                            $("#loginForm").submit();
+                        }
+                    }
+                } else {
+                    $("#loginForm").submit();
+                }
+            });
+        });
+    </script>
+</header>
+</body>
+</html>

@@ -1,0 +1,19 @@
+// Small devices (landscape phones, 576px and up)
+@include media-breakpoint-down(sm) {
+	
+	header {
+		.select-selection {
+			margin: 10px auto !important;
+		}
+		.account-bar, .search-bar {
+			.dropdown-menu {
+				width: 250px;
+			}
+		}
+	}
+	
+	.filters-button-group .btn {
+		width: 100%;
+	}
+	
+}/*/sm media query*/

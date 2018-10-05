@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!-- Coin tabs -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <div class="tab-content mt-10px" id="myTabContent">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+                            <h4 th:text="#{dashboard.otpmanage.title}"></h4>
+                            <div class="box-body">
+                                <div class="col-lg-12 fs-08">&nbsp;</div>
+                                <div class="col-lg-12">
+                                    <form id="otpFormId" class="form-horizontal" role="form" action="#">
+                                        <input type="hidden" id="otpStatus" name="otpStatus"/>
+                                        <div class="row">
+                                            <div class="col-lg-5">
+                                                <div class="row">
+                                                    <div class="col-lg-7 fs-1">
+                                                        <span th:text="#{dashboard.otpmanage.use.questtion}"></span>
+                                                    </div>
+                                                    <div class="col-lg-5 fs-08">
+                                                        <input type="checkbox" id="otpFlag" name="otpFlag" checked data-toggle="toggle" onclick="onReqChangeStatus()" th:checked="${otpFlag}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 fs-08">&nbsp;</div>
+
+                                                <div id="otpInputDiv" class="row jumbotron" style="display:none">
+                                                    <div class="col-lg-12 fs-1">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <span th:text="#{dashboard.otpmanage.use.input.otp.desc1}"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 fs-08">&nbsp;</div>
+                                                        <div class="row">
+                                                            <div class="col-md-10 fs-08 mb-10px">
+                                                                <input class="form-control" name="otpReleaseValue" type="number" th:placeholder="#{dashboard.otpmanage.use.input.otp.desc2}">
+                                                            </div>
+                                                            <div class="col-md-6 fs-08 mb-10px">
+                                                                <button id="btnOtpRelease" class="btn btn-danger fs-1" type="button" th:text="#{dashboard.otpmanage.use.input.otp.desc3}"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div id="otpConfirmDiv" class="row jumbotron" style="display:none">
+                                                    <div class="col-lg-12 fs-1">
+                                                        <div class="row">
+                                                            <div class="col-lg-12">
+                                                                <span th:utext="#{dashboard.otpmanage.use.input.otp.desc4}"></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12 fs-08">&nbsp;</div>
+                                                        <div class="row">
+                                                            <div class="col-md-10 fs-08 mb-10px">
+                                                                <input class="form-control" name="otpConfirmValue" type="number" th:placeholder="#{dashboard.otpmanage.use.input.otp.desc2}">
+                                                            </div>
+                                                            <div class="col-md-6 fs-08 mb-10px">
+                                                                <button id="btnOtpConfirm" class="btn btn-danger fs-1" type="button" th:text="#{dashboard.otpmanage.use.input.otp.desc5}"></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="otpShowDiv" class="col-lg-7" style="display:none">
+                                                <div class="row">
+                                                    <div class="col-lg-10 fs-1 ">
+                                                        <p th:utext="#{dashboard.otpmanage.desc1}"></p>
+                                                    </div>
+                                                    <div class="col-lg-2">&nbsp;</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-10 fs-1 ">
+                                                        <p style="color:red" th:utext="#{dashboard.otpmanage.desc3}"></p>
+                                                    </div>
+                                                    <div class="col-lg-2">&nbsp;</div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-10">
+                                                        <div class="rd-5 bg-white mb-md-30px mb-sm-30px mb-xs-30px  fs-09">
+                                                            <img id="qrbarcodeURL" src="#"/>
+                                                        </div>
+                                                        <div class="rd-5 bg-white mb-md-30px mb-sm-30px mb-xs-30px  fs-09">
+                                                            <p class="mt-20px" th:text="#{dashboard.otpmanage.desc2}"></p>
+                                                            <h3 class="text-quora" id="otpCode"/></h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-2">&nbsp;</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/container-->
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/CommonProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/UserProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/UserService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var userService = new UserService();
+
+        jQuery(document).ready(function() {
+            $("#otpShowDiv").css("display", "none");
+            $("#otpConfirmDiv").css("display", "none");
+            $("#otpInputDiv").css("display", "none");
+
+            $("#otpFlag").change(function () {
+                userService.getOtpStatus();
+                if($("#otpStatus").val() == "C") {
+                    if($("#otpFlag").is(":checked")) {
+                    } else {
+                        $("#otpInputDiv").css("display", "block");
+                    }
+                } else {
+                    if($("#otpFlag").is(":checked")) {
+                        userService.changeOtpKey();
+                        $("#otpShowDiv").css("display", "block");
+                        $("#otpConfirmDiv").css("display", "block");
+                    }
+                }
+            });
+
+            $("#btnOtpRelease").click(function () {
+                userService.reqOtpRelease();
+            });
+
+            $("#btnOtpConfirm").click(function () {
+                userService.reqOtpConfirm();
+            });
+        });
+    </script>
+</body>
+</html>

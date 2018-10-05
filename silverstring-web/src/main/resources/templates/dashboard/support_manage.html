@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                        <h3 class="panel-title" th:utext="#{dashboard.support_manage.title}"></h3>
+                        <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.support_manage.desc}"></span>
+                        <div id="datatable-keytable_wrapper" class="box-body">
+                            <table class="table mb-0" role="grid" aria-describedby="datatable-keytable_info">
+                                <thead>
+                                <tr>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 80px;" th:utext="#{dashboard.support_manage.column1}"></th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;" th:utext="#{dashboard.support_manage.column2}"></th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;" th:utext="#{dashboard.support_manage.column3}"></th>
+                                    <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 80px;" th:utext="#{dashboard.support_manage.column4}"></th>
+                                    <!--
+                                    <th class="sorting" tabindex="0" aria-controls="datatable-keytable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 300px;" th:utext="#{dashboard.support_manage.column5}"></th>
+                                    -->
+                                </tr>
+                                </thead>
+                                <tbody id="supportBodyId"></tbody>
+                            </table>
+                            <div class="col-sm-6">
+                                <div class="dataTables_info" id="datatable-keytable_info" role="status" aria-live="polite">
+                                </div>
+                            </div>
+                            <section>
+                                <nav aria-label="..." class="text-center">
+                                    <div class="col-sm-6">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-keytable_paginate">
+                                            <!--
+                                            <ul class="pagination mt-20px" id="actionLogs-datatable-keytable_paginate">
+                                            </ul>
+                                            -->
+                                        </div>
+                                    </div>
+                                </nav>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+
+                <!--RIGHT-->
+                <div class="col-lg-5">
+                    <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+                        <h3 class="panel-title" th:utext="#{dashboard.support_manage.qna.title}"></h3>
+                        <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.support_manage.qna.desc}"></span>
+                        <form>
+                            <input type="text" id="add_title" class="form-control" th:placeholder="#{dashboard.support_manage.qna.desc2}">
+                            <!--
+                            <input type="email" class="form-control mb-30px rd-5 py-10px" placeholder="Email">
+                            -->
+                            <textarea class="form-control" id="add_content" rows="5" style="width: 100%;" th:placeholder="#{dashboard.support_manage.qna.desc6}"></textarea>
+                            <button class="btn rd-5 btn-fill-color btn-md text-uppercase width-100" type="button" onclick="doSupportRegistClick()" th:utext="#{dashboard.support_manage.qna.req.btn}"></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        <!-- end col -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <script th:src="'assets/dashboard/js/chartist.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/jquery.i18n.properties.js?dummy=' + ${version}"></script>
+    <script th:src="'js/common/utils.js?dummy='+ ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SupportProvider.js?dummy='+ ${version}"></script>
+    <script th:src="'js/service/SupportService.js?dummy='+ ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var supportService = new SupportService();
+
+        supportService.rendererSupports(0);
+        function doSupportRegistClick() {
+            supportService.regist();
+        }
+    </script>
+</body>
+</html>

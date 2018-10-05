@@ -1,0 +1,46 @@
+/*=============================================*/
+/* Progress bars */
+/*=============================================*/
+.progress {
+	&.progress-st-1 {
+		background-color: $second-color;
+		height: 20px;
+		padding: 2px;
+		border-radius: 20px;
+		-webkit-border-radius: 20px;
+		font-weight: 700;
+		font-size: 12px;
+		.progress-bar {
+			background-color: $first-color;
+			border-radius: 10px;
+			-webkit-border-radius: 10px;
+			color: $second-color;
+			padding-right: 10px;
+		}
+	}
+	&.progress-st-2 {
+		background-color: $second-color;
+		height: 5px;
+		padding: 0;
+		border-radius: 0;
+		-webkit-border-radius: 0;
+		font-weight: 700;
+		font-size: 12px;
+		.progress-bar {
+			background-color: $first-color;
+			border-radius: 0;
+			-webkit-border-radius: 0;
+			color: $second-color;
+			padding-right: 0;
+			font-size: 0;
+		}
+	}
+}
+.title {
+	text-transform: uppercase;
+	margin-bottom: 10px;
+	display: block;
+	font-weight: 700;
+	font-size: 14px;
+	color: $second-color;
+}

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!--
+       Coin tabs
+    -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <!--nav tabs-->
+
+            <input id="userId" type="hidden" th:value="${user.id}">
+            <input id="selectionCoin" type="hidden" th:value="${selectionCoin}">
+
+            <div class="col-lg-12">
+                <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                    <h4><span th:utext="#{dashboard.asset_manage.title}"></span></h4>
+                    <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.asset_manage.desc}"></span>
+                    <div class="row">
+                        <table class="table mb-0">
+                                <tbody id="myWalletInfoBodyId"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!--Ripple Tab-->
+        </div><!--/container-->
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+    <!--Go to top-->
+    <p id="back-top">
+        <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </p>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/TransactionProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/WalletService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+        var walletService = new WalletService();
+        walletService.rendererMyWalletInfo();
+    </script>
+</body>
+</html>

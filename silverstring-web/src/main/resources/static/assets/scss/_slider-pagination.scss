@@ -1,0 +1,65 @@
+/*=============================================*/
+/* Slider pagination */
+/*=============================================*/
+.h-paginate {
+	.owl-dots {
+		width: 100%;
+		margin-top: 40px;
+		position: relative;
+		text-align: center;
+		-webkit-transition: .3s opacity;
+		-o-transition: .3s opacity;
+		transition: .3s opacity;
+		z-index: 10;
+		.owl-dot {
+			display: inline-block;
+			margin: 0 3px;
+			width: 8px;
+			height: 8px;
+			background: #ccc;
+			border: 2px solid #ccc;
+			opacity: 1;
+			border-radius: 100%;
+			-webkit-border-radius: 100%;
+			&.active {
+				background-color: #fff;
+				-webkit-transition: all 1s ease;
+				-moz-transition: all 1s ease;
+				-o-transition: all 1s ease;
+				-ms-transition: all 1s ease;
+				transition: all 1s ease;
+			}
+		}
+	}/*/dots*/
+	
+	.owl-nav {
+		width: 100%;
+		position: absolute;
+		top: 45%;
+		.owl-prev, .owl-next {
+			display: block;
+			position: absolute;
+			font-size: 1em;
+			color: #fff;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border-radius: 100%;
+			-webkit-border-radius: 100%;
+			-webkit-transition: all .2s ease;
+			-moz-transition: all .2s ease;
+			-o-transition: all .2s ease;
+			-ms-transition: all .2s ease;
+			transition: all .2s ease;
+			&:hover {
+				background-color: rgba($second-color, .5);
+			}
+		}
+		.owl-prev {left: 30px;}
+		.owl-next {right: 30px;}
+	}/*/nav*/
+	
+}/*Horizontal Pagination*/
+
+

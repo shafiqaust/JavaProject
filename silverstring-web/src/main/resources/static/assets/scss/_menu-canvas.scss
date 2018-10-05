@@ -1,0 +1,98 @@
+/*=============================================*/
+/* CANVAS MENU */
+/*=============================================*/
+#site-wrapper {
+    width: 100%;
+	z-index: 0; /*This fix reveal footer z-index*/
+    
+    #site-canvas {
+		background-color: #fff;
+        width: 100%;
+        position: relative;
+        -webkit-transition: 300ms ease all;
+        transition: 300ms ease all;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden; 
+        
+        #site-menu {
+            width: 300px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            padding: 15px;
+			visibility: hidden;
+			border-left: 1px solid #eee;
+			z-index: 1;
+			background-color: #fff;
+			
+			ul.nav {
+				
+				border-bottom: 1px solid #eee;
+				
+				ul {
+					border-bottom: none;
+					.nav-link {
+						font-size: .9rem;
+						color: #333;
+						&:hover {
+							color: lighten(#333,10%);
+						}
+					}
+				}
+				
+				.nav-link[data-toggle].collapsed:after,
+				.nav-link[data-toggle]:not(.collapsed):after {
+					font-family: FontAwesome;
+					right: 1rem;
+					position: absolute;
+					border-left: 1px solid #eee;
+					padding-left: 1rem;
+				}
+				.nav-link[data-toggle].collapsed:after { content: "\f107"; }
+				.nav-link[data-toggle]:not(.collapsed):after { content: "\f106"; }
+
+				.nav-item {
+					border-top: 1px solid #eee;
+				}
+
+				.nav-link {
+					padding: 0 1rem;
+					line-height: 40px;
+					position: relative;
+					color: #ccc; /*color-primary*/
+					&:hover {
+						/*color: lighten($text-primary,10%);*/
+					}
+				}
+				
+			}
+            
+        }
+
+    }
+    
+    &.show-nav {
+        #site-canvas.right-open {
+            -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+            -webkit-transform: translate3d(-300px, 0, 0);
+            transform: translate3d(-300px, 0, 0);
+            #site-menu {
+                right: -300px;
+				visibility: visible;
+            }
+        }
+        #site-canvas.left-open {
+            -webkit-transform: translateX(300px);
+            transform: translateX(300px);
+            -webkit-transform: translate3d(300px, 0, 0);
+            transform: translate3d(300px, 0, 0);
+            #site-menu {
+                left: -300px;
+				visibility: visible;
+            }
+        }
+    }
+	
+	
+}

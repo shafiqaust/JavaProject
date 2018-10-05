@@ -1,0 +1,31 @@
+/*==========================
+	Service Box
+============================*/
+.service-box-1 {
+	@include radius(5px);
+	overflow: hidden;
+	position: relative;
+	img {@include radius(5px);}
+	.content {
+		position: absolute;
+		bottom: -170px;
+		left: 0;
+		width: 100%;
+		padding: 30px;
+		@include transition(.5s);
+	}
+	&:hover {
+		.content {
+			bottom: 0;
+		}
+	}
+}
+
+@include media-breakpoint-down(md) {
+
+	.service-box-1 {
+		.content {
+			bottom: -220px;
+		}
+	}
+}

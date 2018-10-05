@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+<!-- Navigation Bar-->
+<div th:include="./dashboard/topnav :: topnav"></div>
+<!-- End Navigation Bar-->
+
+<!-- Coin tabs -->
+<section id="coin-tabs" class="py-20px bg-gray-200">
+    <div class="container">
+        <div class="tab-content mt-10px" id="myTabContent">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px">
+                        <h4 th:text="#{dashboard.coin_selling.title}"></h4>
+                        <div class="box-body">
+                            <div class="row"><div class="col-lg-12 fs-08">&nbsp;</div></div>
+                            <div class="row">
+                                <div class="col-md-12 fs-08" align="center">
+                                    <span class="fs-3" ><img width="60px", height="60px" src="../assets/img/logo.png" alt=""/> BTRT Final Sale!!!</span>
+                                </div>
+                            </div>
+                            <div class="row"><div class="col-lg-12 fs-08">&nbsp;</div></div>
+                            <div class="row">
+                                <div class="col-md-1 fs-01"></div>
+                                <div class="col-md-2 fs-01">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="color:black">Final crowd sales officially</li>
+                                        <li class="list-group-item">20 million tokens will be sold per day (Between August 10th ~ 12th).</li>
+                                        <li class="list-group-item">Airdrop for BTRT holders as a new token that getting listed on the bitTrust exchange.</li>
+                                        <li class="list-group-item">200 million token will be burnt.</li>
+                                        <li class="list-group-item">The token's value is garanteed as 0.000002 BTC as the lowest price (in BTRT/BTC pair). </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 fs-08 ">
+
+                                    <div  class="row">
+                                        <div class="col-md-12 alert alert-info rd-10" role="alert" style="border-width:5px;border-style:solid;border-color:red">
+                                            <!-- Today's token sale is finished. Please join the sale tomorrow from 10:00 (UTC). -->
+                                            All token sale is finished. Thank you very much.
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12 alert alert-info rd-10" role="alert">
+                                            We will open final token sale. In our pre-sale period, we had a server problem so some people could not participate the pre-sale so we compensate it as the final sale.
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 alert alert-info rd-10" role="alert">
+                                            The board of the BTRT/BTC pair starts at 10:00 AM on August 13th(UTC).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 fs-1">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item" style="color:black">Benefits for BTRT holders</li>
+                                        <li class="list-group-item">
+                                            Transaction mining:Your transaction fee will pay-back as BTRT on every Wednesday up to 50% of the fee based on number of the token you have:
+                                            <ol>
+                                                <li>0.5 million BTRT->10%</li>
+                                                <li>1 million BTRT->25%</li>
+                                                <li>2 million BTRT->50%</li>
+                                            </ol>
+                                        </li>
+                                        <!--
+                                        <li class="list-group-item">BTRT Official managements will buy BTRT token everyday as support based on the above discounted transacition fee</li>
+                                        -->
+                                        <li class="list-group-item">You can vote for new token listing in BTRT based on number of token you have:<br/>
+                                            <ol>
+                                                <li>0.5 million BTRT->1 vote</li>
+                                                <li>1 million BTRT->2 votes</li>
+                                                <li>2 million BTRT->5 votes</li>
+                                                <li>5 million BTRT->15 votes</li>
+                                            </ol>
+                                            <!--
+                                            <li class="list-group-item">The token's value is garanteed as 1 cent as the lowest price(in BTRT/BTC pair)from August 10th</li>
+                                            -->
+                                    </ul>
+                                </div>
+                                <div class="col-md-1 fs-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/container-->
+</section>
+
+<!-- Footer -->
+<div th:include="./dashboard/footer :: footer"></div>
+<!-- End Footer -->
+
+<!--Go to top-->
+<p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+<script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/CommonProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/SellingProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/service/SellingService.js?dummy=' + ${version}"></script>
+
+<script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+    </script>
+</body>
+</html>

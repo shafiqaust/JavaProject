@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!--
+       Coin tabs
+    -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <div id="blog">
+                <div class="container">
+                    <div class="heading-st-3 text-center mb-40px"><h2><span th:utext="#{dashboard.faq_manage.title}"></span></h2></div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question1}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date1}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer1}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question3}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date3}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer3}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question5}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date5}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer5}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question7}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date7}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer7}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question9}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date9}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer9}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question2}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date2}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer2}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question4}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date4}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer4}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question6}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date6}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer6}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rd-5 mb-30px bg-gray-100 news-box p-30px brd-thin-solid brd-gray-300">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <h4 class="fw-500 mb-10px">
+                                            <a class="text-skype" href="#"><i class="far fa-question-circle"></i><span th:utext="#{dashboard.faq_manage.question8}"></span></a>
+                                        </h4>
+                                        <span class="text-gray-400 fs-0_9 d-block mb-20px" th:utext="#{dashboard.faq_manage.date8}"></span>
+                                        <p class="mb-0"><i class="fab fa-replyd"></i><span th:utext="#{dashboard.faq_manage.answer8}"></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!--/container-->
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top">
+        <a href="#top"><i class="fa fa-angle-up"></i></a>
+    </p>
+
+</body>
+</html>

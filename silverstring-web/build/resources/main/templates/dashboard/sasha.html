@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns:mf="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Doc2</title>
+
+
+    <!--Connecting adaptivity-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap Reboot CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap-reboot.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!-- Font -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <!-- Main CSS -->
+
+    <link rel="stylesheet" href="assets/css/main.css">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+
+</head>
+<body>
+<section class="purse" id="purse">
+    <div class="container-fluid container-fluid_plain">
+        <div class="row no-gutters">
+            <div class="col-lg-12">
+                <!-- top start -->
+                <div class="purse__dom">
+                    <div class="logo">
+                        <img src="assets/img/logo.png" alt="" class="logo__img">
+                    </div>
+                    <div class="purse__top">
+                        <h1 class="purse__title">
+                            Dream Box
+                        </h1>
+                        <div class="purse__box">
+                            <form action="#" class="form-scan">
+                                <input type="search" class="form-scan__inpt" placeholder="Search...">
+                                <button data-submit="" class="form-scan__btn">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                            <div class="purse__sup">
+                                <p class="purse__att">
+                                    !
+                                </p>
+                                <p class="purse__word">
+                                    Support
+                                </p>
+                            </div>
+                            <a href="#" class="purse__link">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                            <p class="purse__name">
+                                Tatsuya Inoue
+                            </p>
+                            <a href="#" class="pirse__user">
+                                <i class="fas fa-user-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- top end -->
+            </div>
+            <div class="col-lg-12">
+                <div class="purse__case">
+                    <!-- all start-->
+                    <div class="purse__block">
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-box"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-outdent"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-signal"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-calendar-alt"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-clock"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-calculator"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-fax"></i>
+                        </a>
+                        <a href="#" class="purse__connect">
+                            <i class="purse__ico fas fa-cog"></i>
+                        </a>
+                        <a href="#" class="purse__connect comments">
+                            <i class="purse__ico fas fa-comments"></i>
+                        </a>
+                    </div>
+                    <input id="selectionCoin" type="hidden" th:value="${selectionCoin}">
+                    <!-- left end-->
+                    <!-- right start-->
+                    <div class="purse__right">
+                        <div class="purse__one">
+                            <!-- ballance start -->
+                            <div class="money">
+                                <div class="money__top">
+                                    <h2 class="money__title">
+                                        Your Ballance
+                                    </h2>
+                                    <i class="fas fa-ellipsis-v money__ico"></i>
+                                </div>
+                                <table class="table mb-0 coin-list-table money__box">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.coin_name}" style="color:#fff"></th>
+                                        <th scope="col" colspan="2" th:utext="#{dashboard.deposit_manage.deposit.coin_balance} " style="color:#fff"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="" th:each="info : ${walletInfos.infos}">
+                                        <td class="fs-08 text-vl-center">
+                                        <img style="width:30px" th:src="@{'assets/img/'+${info.coin.name}+'.png'}"/>
+                                        </td>
+                                        <td class="fs-08 text-vl-center"><a href="#" th:onclick="'onDepositTabChange(\'' + ${info.coin.name} + '\')'">
+                                            <span class="text-white text-bold" th:text="${info.coin.unit}" style="color:#fff"></span></a></td>
+                                        <td class="fs-08 text-white  text-vl-center">
+                                            <div th:if="${info.wallet.availableBalance} > 0">
+                                                <!--<span class="text-dark text-bold" th:text="${#numbers.formatDecimal(info.wallet.availableBalance, 1, 'COMMA',  8, 'POINT')}"></span>-->
+                                                <span class="text-white text-bold" mf:decimal="${info.wallet.availableBalance}" style="color:#fff"></span>
+                                            </div>
+                                            <div th:unless="${info.wallet.availableBalance} > 0">
+                                                <span class="text-white text-bold">0</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!--<div class="money__box">-->
+                                    <!--<div class="money__wrap">-->
+                                        <!--<p class="money_tot">-->
+                                            <!--Total Current mallance-->
+                                        <!--</p>-->
+                                        <!--<select class="money__select">-->
+                                            <!--<option>JPY</option>-->
+                                            <!--<option>JPY</option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                    <!--<div class="money__head">-->
+                                        <!--<p class="money__ballance">-->
+                                            <!--586254-->
+                                        <!--</p>-->
+                                        <!--<p class="money__word">-->
+                                            <!--JPY-->
+                                        <!--</p>-->
+                                    <!--</div>-->
+                                    <!--<div class="money__case">-->
+                                        <!--<div class="money__inner">-->
+                                            <!--<p class="money__name">-->
+                                                <!--Bitcoin balance-->
+                                            <!--</p>-->
+                                            <!--<div class="money__holder">-->
+                                                <!--<i class="fab fa-bitcoin bit"></i>-->
+                                                <!--<p class="money__ball money__ball_bit">-->
+                                                    <!--0.5246-->
+                                                <!--</p>-->
+                                                <!--<p class="money__word">-->
+                                                    <!--BTC-->
+                                                <!--</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="money__inner">-->
+                                            <!--<p class="money__name">-->
+                                                <!--Ethereum balance-->
+                                            <!--</p>-->
+                                            <!--<div class="money__holder">-->
+                                                <!--<i class="fab fa-ethereum eth"></i>-->
+                                                <!--<p class="money__ball money__ball_eth">-->
+                                                    <!--1.8452-->
+                                                <!--</p>-->
+                                                <!--<p class="money__word">-->
+                                                    <!--ETH-->
+                                                <!--</p>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="money__wrapping">-->
+                                        <!--<div class="money__bot">-->
+                                            <!--<p class="money__num money__num_bit">-->
+                                                <!--421254-->
+                                            <!--</p>-->
+                                            <!--<p class="money__word">-->
+                                                <!--JPY-->
+                                            <!--</p>-->
+                                        <!--</div>-->
+                                        <!--<div class="money__bot">-->
+                                            <!--<p class="money__num money__num_eth">-->
+                                                <!--52602-->
+                                            <!--</p>-->
+                                            <!--<p class="money__word">-->
+                                                <!--JPY-->
+                                            <!--</p>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                            <!-- ballance end -->
+                            <!-- Deposit Manage -->
+                            <div class="money">
+                                <div class="money__top">
+                                    <h2 class="money__title">
+                                        Deposit
+                                    </h2>
+                                    <i class="fas fa-ellipsis-v money__ico"></i>
+
+                                    <button class="btn btn-danger" style="margin-left:20px" onclick="createWallet('ETHEREUM')" >Create ETHEREUM Wallet </button>
+
+                                </div>
+
+
+                                <div class="money__box money__box_dep">
+                                    <div class="pouch">
+
+                                        <div class="tab-pane" th:each="info : ${walletInfos.infos}" th:id="'deposit-nav-content-' + ${info.coin.name}">
+
+                                            <div class="pouch__box">
+                                                <p class="pouch__text">
+
+                                                </p>
+                                                <div class="pouch__block">
+                                                    <td class="fs-08 text-vl-center">
+                                                        <img style="width:30px" th:src="@{'assets/img/'+${info.coin.name}+'.png'}"/>
+                                                    </td>
+                                                    <p class="pouch__adr pouch__adr_eth" th:unless="${info.wallet.address} == null" th:text="${info.wallet.address} + ${info.wallet.bankName == null ? '' : ' * ' + info.wallet.bankName} + ${info.wallet.bankName == null ? '' : ' * ' + info.wallet.recvCorpNm}">>
+
+                                                    </p>
+                                                    <a href="#" class="pouch__btn but">
+                                                        Address Copy
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" >
+                                                <div class="col-md-12 fs-08">
+                                                    <!--<p th:utext="#{dashboard.deposit_manage.deposit.desc1(${info.coin.unit})}"></p>-->
+                                                    <br>
+                                                    <!--<p> <span th:utext="#{dashboard.deposit_manage.deposit.desc2(${info.coin.unit})}"/></p>-->
+                                                    <h2 style="color:orange" th:if="${info.wallet.address} == null">
+
+
+                                                    </h2>
+
+                                                    <p></p>
+                                                    <br>
+                                                    <!--<p><span th:utext="#{dashboard.deposit_manage.deposit.desc4(${info.coin.unit})}"/></p>-->
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <!--<div class="pouch__box">-->
+                                            <!--<p class="pouch__text">-->
+                                                <!--Your Ethereum adress-->
+                                            <!--</p>-->
+                                            <!--<div class="pouch__block">-->
+                                                <!--<i class="fab fa-ethereum eth"></i>-->
+
+                                                <!--<a href="#" class="pouch__btn but">-->
+                                                    <!--Address Copy-->
+                                                <!--</a>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- Deposit end -->
+                        </div>
+                        <div class="purse__two">
+                            <!-- Transactions start -->
+                            <div class="money">
+                                <div class="money__top">
+                                    <h2 class="money__title">
+                                        Transactions
+                                    </h2>
+                                    <i class="fas fa-ellipsis-v money__ico"></i>
+                                </div>
+                                <!--<div class="money__box">-->
+                                    <!--<div class="transfer">-->
+                                        <!--<div class="transfer__box">-->
+                                            <!--<a href="#" class="transfer__btn">-->
+                                                <!--ALL-->
+                                            <!--</a>-->
+                                            <!--<a href="#" class="transfer__btn">-->
+                                                <!--SEND-->
+                                            <!--</a>-->
+                                            <!--<a href="#" class="transfer__btn">-->
+                                                <!--RECENT-->
+                                            <!--</a>-->
+                                        <!--</div>-->
+                                        <!--<div class="transfer__wrap">-->
+                                            <!--<div class="transfer__block">-->
+                                                <!--<div class="transfer__when">-->
+                                                    <!--<div class="transfer__time">-->
+                                                        <!--16:23-->
+                                                    <!--</div>-->
+                                                    <!--<div class="transfer__date">-->
+                                                        <!--12 dec 2018-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="transfer__inner">-->
+                                                    <!--<p class="transfer__name">-->
+                                                        <!--1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee-->
+                                                    <!--</p>-->
+                                                    <!--<div class="transfer__holder">-->
+                                                        <!--<i class="transfer__ico transfer__ico_green fas fa-arrow-right"></i>-->
+                                                        <!--<p class="transfer__num">-->
+                                                            <!--0.009-->
+                                                        <!--</p>-->
+                                                        <!--<p class="transfer__desc">-->
+                                                            <!--BTC-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="transfer__wrap">-->
+                                            <!--<div class="transfer__block">-->
+                                                <!--<div class="transfer__when">-->
+                                                    <!--<div class="transfer__time">-->
+                                                        <!--15:23-->
+                                                    <!--</div>-->
+                                                    <!--<div class="transfer__date">-->
+                                                        <!--12 dec 2018-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="transfer__inner">-->
+                                                    <!--<p class="transfer__name">-->
+                                                        <!--1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee-->
+                                                    <!--</p>-->
+                                                    <!--<div class="transfer__holder">-->
+                                                        <!--<i class="transfer__ico transfer__ico_green fas fa-arrow-right"></i>-->
+                                                        <!--<p class="transfer__num">-->
+                                                            <!--0.007-->
+                                                        <!--</p>-->
+                                                        <!--<p class="transfer__desc">-->
+                                                            <!--BTC-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--<div class="transfer__wrap">-->
+                                            <!--<div class="transfer__block">-->
+                                                <!--<div class="transfer__when">-->
+                                                    <!--<div class="transfer__time">-->
+                                                        <!--11:23-->
+                                                    <!--</div>-->
+                                                    <!--<div class="transfer__date">-->
+                                                        <!--12 dec 2018-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                                <!--<div class="transfer__inner">-->
+                                                    <!--<p class="transfer__name">-->
+                                                        <!--1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee-->
+                                                    <!--</p>-->
+                                                    <!--<div class="transfer__holder">-->
+                                                        <!--<i class="transfer__ico transfer__ico_red fas fa-arrow-left"></i>-->
+                                                        <!--<p class="transfer__num">-->
+                                                            <!--0.2-->
+                                                        <!--</p>-->
+                                                        <!--<p class="transfer__desc">-->
+                                                            <!--BTC-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <table class="table mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column1}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column2}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column3}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column4}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column5}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column6}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column7}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="depositTransactionBodyId">
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Transactions end -->
+                            <!-- Withdraw start -->
+                            <div class="money">
+                                <div class="money__top">
+                                    <h2 class="money__title">
+                                        Withdraw
+                                    </h2>
+                                    <i class="fas fa-ellipsis-v money__ico"></i>
+                                </div>
+
+                                <!--<div class="tab-pane" th:each="info : ${walletInfos.infos}" th:id="'withdrawal-nav-content-' + ${info.coin.name}">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-lg-12 fs-08">-->
+                                            <!--<p th:utext="#{dashboard.withdrawal_manage.withdrawal.desc1(${info.coin.unit})}"></p>-->
+                                            <!--</h2>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-lg-6 fs-08">-->
+                                            <!--<form th:id="'withdrawal' + ${info.coin.name} + 'FormId'" class="form-horizontal" role="form">-->
+                                                <!--<input type="hidden" name="coinName" class="form-control" th:value="${info.coin.name}">-->
+                                                <!--<input type="hidden" name="coinUnit" class="form-control" th:value="${info.coin.unit}">-->
+                                                <!--<input type="hidden" name="onceAmount" class="form-control" th:value="${info.level.onceAmount}">-->
+                                                <!--<input type="hidden" name="onedayAmount" class="form-control" th:value="${info.level.onedayAmount}">-->
+                                                <!--<input type="hidden" name="myLimitAmount" class="form-control" th:value="${info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance > 0 ? info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance: 0}">-->
+                                                <!--<input type="hidden" name="availableBalance" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.availableBalance,1,8,'POINT')}">-->
+                                                <!--<input type="hidden" name="minWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.coin.withdrawalMinAmount,1,8,'POINT')}">-->
+                                                <!--<input type="hidden" name="realWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.realWithdrawalAmount,1,8,'POINT')}">-->
+                                                <!--<input type="hidden" name="withdrawalFee" class="form-control" th:value="${#numbers.formatDecimal(info.withdrawalFee,1,8,'POINT')}">-->
+
+
+                                                <!--<div class="money__box money__box_transactions">-->
+                                                    <!--<div class="pouch">-->
+                                                        <!--<div class="pouch__box">-->
+                                                            <!--<p class="pouch__text">-->
+                                                                <!--Send BTC:-->
+                                                            <!--</p>-->
+                                                            <!--<div class="pouch__wrap">-->
+                                                                <!--<div class="pouch__block">-->
+                                                                    <!--<i class="fab fa-bitcoin bit"></i>-->
+                                                                    <!--<p class="pouch__adr pouch__adr_bit">-->
+                                                                        <!--1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee-->
+                                                                    <!--</p>-->
+                                                                    <!--<a href="#" class="pouch__btn pouch__btn_bit but">-->
+                                                                        <!--SEND-->
+                                                                    <!--</a>-->
+                                                                <!--</div>-->
+                                                                <!--<div class="pouch__inner">-->
+                                                                    <!--<div class="pouch__bon">-->
+                                                                        <!--<p class="pouch__word">-->
+                                                                            <!--AMOUNT-->
+                                                                        <!--</p>-->
+                                                                        <!--<p class="pouch__num pouch__num_btc">-->
+                                                                            <!--0.233455-->
+                                                                        <!--</p>-->
+                                                                        <!--<p class="pouch__ico">-->
+                                                                            <!--BTC-->
+                                                                        <!--</p>-->
+                                                                    <!--</div>-->
+                                                                    <!--<div class="pouch__bon">-->
+                                                                        <!--<p class="pouch__word">-->
+                                                                            <!--FEE-->
+                                                                        <!--</p>-->
+                                                                        <!--<p class="pouch__num pouch__num_btc-fee">-->
+                                                                            <!--0.002-->
+                                                                        <!--</p>-->
+                                                                        <!--<p class="pouch__ico">-->
+                                                                            <!--BTC-->
+                                                                        <!--</p>-->
+                                                                    <!--</div>-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+
+
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc2}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<span class="font-weight-bold" mf:decimal="${info.wallet.availableBalance}"></span><span th:text="' ' + ${info.coin.unit}"></span>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc3}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<span class="font-weight-bold" mf:decimal="${info.wallet.coin.withdrawalMinAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc14}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<span class="font-weight-bold" mf:decimal="${info.realWithdrawalAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<span style="margin-left: 20px" th:text="#{dashboard.withdrawal_manage.withdrawal.desc15}"></span><span mf:decimal="${info.withdrawalFee}"></span><span th:text="' ' + ${info.coin.unit}"></span>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc8}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<input class="form-control fs-08" type="text" name="address" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc9}">&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc10}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<input class="form-control fs-08" type="number" th:id="${info.coin.name} + 'amount'" name="amount" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc11}">&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;&lt;!&ndash; <span th:text="#{dashboard.withdrawal_manage.withdrawal.desc16}"></span> &ndash;&gt;&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc12}"></span></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<input class="form-control fs-08"  type="number" name="otp" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc13}">&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-4 fs-08 text-center mb-10px"></div>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<div class="col-md-8 fs-08 mb-10px">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<button type="button" class="btn btn-danger fs-1" th:onclick="'doWithdrawal(\'' + ${info.coin.name} + '\')'" th:utext="#{dashboard.withdrawal_manage.withdrawal.req.btn}"></button>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+                                            <!--</form>-->
+                                        <!--</div>-->
+                                        <!--&lt;!&ndash;<div class="col-lg-6">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<div class="rd-5 bg-white mb-md-30px mb-sm-30px mb-xs-30px">&ndash;&gt;-->
+                                                <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;<table class="table mb-0" style="width: 360px; margin: 20px auto">&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.header.column1}"></th>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<th scope="col" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.header.column2}"></th>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;&lt;!&ndash;&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column1}"></td>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08" th:text="${info.level.onceAmount}"></td>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;&ndash;&gt;&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column2}"></td>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08"><span mf:decimal="${info.level.onedayAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span></td>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+                                                        <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08" th:utext="#{dashboard.withdrawal_manage.withdrawal.limit.desc.column3}"></td>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;<td class="text-third-color fs-08">&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<span mf:decimal="${info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance > 0 ? info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance : 0 }"></span>&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<span th:text="' ' + ${info.coin.unit}"></span>&ndash;&gt;-->
+                                                            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                                                        <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+                                                        <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                                                    <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+
+                                <div class="money__box money__box_transactions">
+                                    <div class="pouch">
+                                        <div class="pouch__box">
+                                            <div class="tab-pane" th:each="info : ${walletInfos.infos}" th:id="'withdrawal-nav-content-' + ${info.coin.name}">
+                                                <div class="row">
+                                                    <div class="col-lg-12 fs-08">
+                                                        <!--<p th:utext="#{dashboard.withdrawal_manage.withdrawal.desc1(${info.coin.unit})}"></p>-->
+                                                        </h2>
+                                                    </div>
+                                                    <div class="fs-08">
+                                                        <form th:id="'withdrawal' + ${info.coin.name} + 'FormId'" class="form-horizontal" role="form">
+                                                            <input type="hidden" name="coinName" class="form-control" th:value="${info.coin.name}">
+                                                            <input type="hidden" name="coinUnit" class="form-control" th:value="${info.coin.unit}">
+                                                            <input type="hidden" name="onceAmount" class="form-control" th:value="${info.level.onceAmount}">
+                                                            <input type="hidden" name="onedayAmount" class="form-control" th:value="${info.level.onedayAmount}">
+                                                            <input type="hidden" name="myLimitAmount" class="form-control" th:value="${info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance > 0 ? info.level.onedayAmount - info.wallet.todayWithdrawalTotalBalance: 0}">
+                                                            <input type="hidden" name="availableBalance" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.availableBalance,1,8,'POINT')}">
+                                                            <input type="hidden" name="minWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.wallet.coin.withdrawalMinAmount,1,8,'POINT')}">
+                                                            <input type="hidden" name="realWithdrawalAmount" class="form-control" th:value="${#numbers.formatDecimal(info.realWithdrawalAmount,1,8,'POINT')}">
+                                                            <input type="hidden" name="withdrawalFee" class="form-control" th:value="${#numbers.formatDecimal(info.withdrawalFee,1,8,'POINT')}">
+
+                                                            <!--<div class="row rd-7 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">-->
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc2}"></span></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<span class="font-weight-bold" mf:decimal="${info.wallet.availableBalance}"></span><span th:text="' ' + ${info.coin.unit}"></span>-->
+                                                                <!--</div>-->
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc3}"></span></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<span class="font-weight-bold" mf:decimal="${info.wallet.coin.withdrawalMinAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>-->
+                                                                <!--</div>-->
+
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc14}"></span></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<span class="font-weight-bold" mf:decimal="${info.realWithdrawalAmount}"></span><span th:text="' ' + ${info.coin.unit}"></span>-->
+                                                                    <!--<span style="margin-left: 20px" th:text="#{dashboard.withdrawal_manage.withdrawal.desc15}"></span><span mf:decimal="${info.withdrawalFee}"></span><span th:text="' ' + ${info.coin.unit}"></span>-->
+                                                                <!--</div>-->
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc8}"></span></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<input class="form-control fs-08" type="text" name="address" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc9}">-->
+                                                                <!--</div>-->
+
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc10}"></span></div>-->
+                                                                <!--<div class="col-md-4 fs-08 mb-10px">-->
+
+                                                                <!--</div>-->
+                                                                <!--<div class="col-md-4 fs-08 mb-10px">-->
+                                                                    <!--&lt;!&ndash; <span th:text="#{dashboard.withdrawal_manage.withdrawal.desc16}"></span> &ndash;&gt;-->
+                                                                <!--</div>-->
+
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"><span th:utext="#{dashboard.withdrawal_manage.withdrawal.desc12}"></span></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<input class="form-control fs-08"  type="number" name="otp" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc13}">-->
+                                                                <!--</div>-->
+                                                                <!--<div class="col-md-4 fs-08 text-center mb-10px"></div>-->
+                                                                <!--<div class="col-md-8 fs-08 mb-10px">-->
+                                                                    <!--<button type="button" class="btn btn-danger fs-1" th:onclick="'doWithdrawal(\'' + ${info.coin.name} + '\')'" th:utext="#{dashboard.withdrawal_manage.withdrawal.req.btn}"></button>-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+
+                                                            <p class="pouch__text">
+                                                                Send BTC:
+                                                            </p>
+                                                            <div class="pouch__wrap">
+                                                                <div class="pouch__block">
+                                                                    <img style="width:30px" th:src="@{'assets/img/'+${info.coin.name}+'.png'}"/>
+                                                                    <p class="pouch__adr pouch__adr_bit">
+                                                                        <input class="form-control fs-08" type="text" name="address" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc9}">
+                                                                    </p>
+                                                                    <button type="button" class="btn btn-danger fs-1" th:onclick="'doWithdrawal(\'' + ${info.coin.name} + '\')'" >Withdraw</button>
+                                                                    <!--<a href="#" class="pouch__btn pouch__btn_bit but">-->
+                                                                        <!--SEND-->
+                                                                    <!--</a>-->
+                                                                </div>
+                                                                <div class="pouch__inner">
+                                                                    <div class="pouch__bon">
+                                                                        <p class="pouch__word">
+                                                                            AMOUNT
+                                                                        </p>
+                                                                        <p class="pouch__num pouch__num_btc">
+                                                                            <input class="form-control fs-08" type="number" th:id="${info.coin.name} + 'amount'" name="amount" th:placeholder="#{dashboard.withdrawal_manage.withdrawal.desc11}">
+                                                                        </p>
+                                                                        <!--<p class="pouch__ico">-->
+                                                                        <!--BTC-->
+                                                                        <!--</p>-->
+                                                                    </div>
+                                                                    <div class="pouch__bon">
+                                                                        <p class="pouch__word">
+                                                                            FEE
+                                                                        </p>
+                                                                        <p class="pouch__num pouch__num_btc-fee">
+                                                                           <span mf:decimal="${info.withdrawalFee}"></span><span th:text="' ' + ${info.coin.unit}"></span>
+                                                                        </p>
+
+                                                                        <!--<p class="pouch__ico">-->
+                                                                        <!--BTC-->
+                                                                        <!--</p>-->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                        <!--<div class="pouch__box">-->
+                                            <!--<p class="pouch__text">-->
+                                                <!--Send ETH:-->
+                                            <!--</p>-->
+                                            <!--<div class="pouch__wrap">-->
+                                                <!--<div class="pouch__block">-->
+                                                    <!--<i class="fab fa-ethereum eth"></i>-->
+                                                    <!--<p class="pouch__adr pouch__adr_eth">-->
+                                                        <!--1BQ9qza7fn9snSCyJQB3ZcN46biBtkt4ee-->
+                                                    <!--</p>-->
+                                                    <!--<a href="#" class="pouch__btn pouch__btn_eth but">-->
+                                                        <!--SEND-->
+                                                    <!--</a>-->
+                                                <!--</div>-->
+                                                <!--<div class="pouch__inner">-->
+                                                    <!--<div class="pouch__bon">-->
+                                                        <!--<p class="pouch__word">-->
+                                                            <!--AMOUNT-->
+                                                        <!--</p>-->
+                                                        <!--<p class="pouch__num pouch__num_eth">-->
+                                                            <!--0.233455-->
+                                                        <!--</p>-->
+                                                        <!--<p class="pouch__ico">-->
+                                                            <!--ETH-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                    <!--<div class="pouch__bon">-->
+                                                        <!--<p class="pouch__word">-->
+                                                            <!--FEE-->
+                                                        <!--</p>-->
+                                                        <!--<p class="pouch__num pouch__num_eth-fee">-->
+                                                            <!--0.002-->
+                                                        <!--</p>-->
+                                                        <!--<p class="pouch__ico">-->
+                                                            <!--ETH-->
+                                                        <!--</p>-->
+                                                    <!--</div>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Withdraw end -->
+                        </div>
+                    </div>
+                    <!-- right end-->
+                </div>
+                <!-- all end-->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<div th:include="./dashboard/footer :: footer"></div>
+<!-- End Footer -->
+
+<script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+<script th:src="'assets/dashboard/js/chartist.min.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/provider/TransactionProvider.js?dummy=' + ${version}"></script>
+<script th:src="'js/service/WalletService.js?dummy=' + ${version}"></script>
+
+<script type="text/javascript">
+           
+
+       utils.locale_init('[[${localeName}]]');
+
+        var walletService;
+        walletService     = new WalletService();
+        walletService.rendererDepositTransactions($("#selectionCoin").val(), 0);
+        function onDepositTabChange(coin) {
+            $("#selectionCoin").val(coin);
+            walletService.rendererDepositTransactions(coin, 0);
+        }
+
+        function createWallet(coin) {
+            walletService.createWallet(coin);
+        }
+                        function doWithdrawal(coin) {
+            walletService.doWithdrawal(coin);
+        }
+
+        function cancelWithdrawal(coin, transaction_id) {
+            walletService.onCancelWithdrawal(coin, transaction_id);
+        }
+    </script>
+</body>
+</html>

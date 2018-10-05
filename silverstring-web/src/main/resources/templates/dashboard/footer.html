@@ -1,0 +1,71 @@
+<html>
+    <div th:fragment="footer" >
+        <footer class="footer text-right pt-1px pb-30px bg-third-color">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 mt-30px text-center"> <span class="fs-0_9">All Rights Reserved 2018 @ DreamBox</span> </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Jquery | Popper | Bootstrap -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script>
+        <script src="assets/js/plugins/owl.carousel.autoplay/owl.autoplay.min.js"></script>
+        <script src="assets/js/plugins/countimator/js/countimator.min.js"></script>
+        <script src="assets/js/plugins/multibackground/multibackground.min.js"></script>
+        <script src="assets/node_modules/plyr/dist/plyr.js"></script>
+        <script src="assets/node_modules/startbootstrap-scrolling-nav/js/scrolling-nav.js"></script>
+        <script src="assets/node_modules/retinajs/dist/retina.min.js"></script>
+        <script src="assets/js/minified/custom.min.js"></script>
+
+        <!-- 기존script start -->
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/amstock.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/dataloader/dataloader.min.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script src="https://code.highcharts.com/stock/highstock.js"></script>
+        <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
+        <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
+        <script src="https://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+        <!-- 기존script end -->
+
+        <script th:src="'https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.0/chartist.min.js?dummy=' + ${version}"></script>
+        <script th:src="'assets/dashboard/pages/sweet-alert.min.js?dummy=' + ${version}"></script>
+        <script th:src="'assets/dashboard/pages/jquery.sweet-alert.init.js?dummy=' + ${version}"></script>
+        <script th:src="'js/common/jquery.i18n.properties.js?dummy=' + ${version}"></script>
+        <script th:src="'js/lib/form-to-obj.min.js?dummy=' + ${version}"></script>
+        <script th:src="'js/websock/stomp.min.js?dummy=' + ${version}"></script>
+
+        <script type="text/javascript">
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
+
+            $(document).ajaxSend(function (e, xhr, options) {
+                xhr.setRequestHeader (header, token);
+            });
+
+            function onLangClick(lang) {
+                $("#language").html(lang);
+            }
+
+            function initSetLang() {
+                var lang = '[[${localeName}]]';
+                if(lang.indexOf('ko') >= 0) {
+                    $("#language").html('Korean');
+                } else if(lang.indexOf('en') >= 0) {
+                    $("#language").html("English");
+                }
+            }
+
+            initSetLang();
+        </script>
+    </div>
+</html>

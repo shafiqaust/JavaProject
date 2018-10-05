@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+
+    <!-- main script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container-fluid container-fluid_plain">
+        <div class="row no-gutters">
+            <div class="col-lg-12">
+                <div class="header__box">
+                    <form action="#" class="form">
+                        <div class="form__case">
+                            <img src="img/logo.png" alt="" class="form__logo">
+                            <h1 class="form__title">
+                                <span>Dream</span> box
+                            </h1>
+                        </div>
+                        <p class="form__text">
+                            Welkome back! Please login to your account
+                        </p>
+                        <div class="form__dom">
+                            <input type="text" class="form__input" name="name" placeholder="Username">
+                            <input type="password" class="form__input" name="name" placeholder="Password">
+                            <div class="form__box">
+                                <div class="form__checked">
+                                    <input type="checkbox" class="form__check" id="first" name="check[]" value="Remember me">
+                                    <p class="form__word">
+                                        Remember me
+                                    </p>
+                                </div>
+                                <a href="#" class="form__link">
+                                    Forgot Password
+                                </a>
+                            </div>
+                            <div class="form__block">
+                                <a href="#" class="form__btn form__btn_b">
+                                    Login
+                                </a>
+                                <a href="#" class="form__btn">
+                                    Sign up
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</body>
+</html>

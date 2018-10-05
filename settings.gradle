@@ -1,0 +1,5 @@
+rootProject.name = 'silverstring-wallet'
+include 'silverstring-web'
+include 'silverstring-core'
+include 'silverstring-domain'
+

@@ -1,0 +1,159 @@
+<!doctype html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!-- Coin tabs -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <input id="selectionCoin" type="hidden" th:value="${selectionCoin}">
+
+            <div class="tab-content mt-10px" id="myTabContent">
+                <!--Bitcoin tab-->
+                <div class="row">
+                    <div class="col-lg-3 border-right-1 border-bottom-1">
+                        <div class="bg-white p-30px rd-5 mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                            <div class="row">
+                                <table class="table mb-0 coin-list-table">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.coin_name}"></th>
+                                        <th scope="col" colspan="2" th:utext="#{dashboard.deposit_manage.deposit.coin_balance}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="" th:each="info : ${walletInfos.infos}">
+                                            <td class="fs-08 text-vl-center"><a href="#" th:onclick="'onDepositTabChange(\'' + ${info.coin.name} + '\')'"><span class="text-dark text-bold" th:text="${info.coin.unit}"></span></a></td>
+                                            <td class="fs-08 text-vl-center">
+                                                <div th:if="${info.wallet.availableBalance} > 0">
+                                                    <!--<span class="text-dark text-bold" th:text="${#numbers.formatDecimal(info.wallet.availableBalance, 1, 'COMMA',  8, 'POINT')}"></span>-->
+                                                    <span class="text-dark text-bold" mf:decimal="${info.wallet.availableBalance}"></span>
+                                                </div>
+                                                <div th:unless="${info.wallet.availableBalance} > 0">
+                                                    <span class="text-dark text-bold">0</span>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                            <h4><span th:utext="#{dashboard.deposit_manage.deposit.title}"></span></h4>
+                            <div class="box-body">
+                                <div class="panel-body">
+                                    <div class="tab-content br-n pn">
+                                        <div class="tab-pane" th:each="info : ${walletInfos.infos}" th:id="'deposit-nav-content-' + ${info.coin.name}">
+                                            <div class="row" >
+                                                <div class="col-md-12 fs-08">
+                                                    <p th:utext="#{dashboard.deposit_manage.deposit.desc1(${info.coin.unit})}"></p>
+                                                    <br>
+                                                    <p> <span th:utext="#{dashboard.deposit_manage.deposit.desc2(${info.coin.unit})}"/></p>
+                                                    <h2 style="color:orange" th:if="${info.wallet.address} == null">
+                                                        <button class="btn btn-danger" th:onclick="'createWallet(' + '\'' + ${info.coin.name} + '\')'" th:utext="#{dashboard.deposit_manage.deposit.desc3(${info.coin.unit})}"></button>
+                                                    </h2>
+                                                    <h4 style="color:#4740DB" th:unless="${info.wallet.address} == null" th:text="${info.wallet.address} + ${info.wallet.bankName == null ? '' : ' * ' + info.wallet.bankName} + ${info.wallet.bankName == null ? '' : ' * ' + info.wallet.recvCorpNm}"></h4>
+                                                    <p></p>
+                                                    <br>
+                                                    <p><span th:utext="#{dashboard.deposit_manage.deposit.desc4(${info.coin.unit})}"/></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px" style="margin-top: 10px;">
+                            <h4><span th:utext="#{dashboard.deposit_manage.deposit.history.title}"></span></h4>
+                            <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.deposit_manage.deposit.history.desc}"></span>
+                            <div class="row">
+                                <table class="table mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column1}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column2}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column3}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column4}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column5}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column6}"></th>
+                                        <th scope="col" th:utext="#{dashboard.deposit_manage.deposit.history.column7}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="depositTransactionBodyId">
+                                    </tbody>
+                                </table>
+                            </div>
+                            <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.deposit_manage.deposit.history.alert}"></span>
+                        </div>
+                    </div>
+                </div>
+                <!--/bitcoin tab-->
+                <!--Ripple Tab-->
+            </div>
+            <!--/tab panes-->
+        </div>
+        <!--/container-->
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'assets/dashboard/js/chartist.min.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/TransactionProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/WalletService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var walletService = new WalletService();
+
+        walletService.rendererDepositTransactions($("#selectionCoin").val(), 0);
+        function onDepositTabChange(coin) {
+            $("#selectionCoin").val(coin);
+            walletService.rendererDepositTransactions(coin, 0);
+        }
+
+        function createWallet(coin) {
+            walletService.createWallet(coin);
+        }
+    </script>
+</body>
+</html>

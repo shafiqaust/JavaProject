@@ -1,0 +1,233 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Header include -->
+    <title th:text="#{exchange.name}"></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <!--
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="No-Cache">
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Add -->
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/import.min.css">
+    <link rel="shortcut icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/dashboard/css/sweet-alert.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css2/chartist.min.css" type="text/css" />
+    <link rel="stylesheet" href="assets/dashboard/css/components.css" type="text/css" />
+    <!-- End Header include -->
+</head>
+
+<body class="animate-in" th:inline="text">
+    <!-- Navigation Bar-->
+    <div th:include="./dashboard/topnav :: topnav"></div>
+    <!-- End Navigation Bar-->
+
+    <!-- Coin tabs -->
+    <section id="coin-tabs" class="py-20px bg-gray-200">
+        <div class="container">
+            <input id="baseCoin" type="hidden" th:value="${baseCoin}">
+            <input id="categoriedFirstSubCoin" type="hidden" th:value="${categoriedFirstSubCoin.subCoin.name}">
+            <input id="baseCoinUnit" type="hidden" th:value="${baseCoinUnit}">
+            <input id="categoriedFirstSubCoinUnit" type="hidden" th:value="${categoriedFirstSubCoin.subCoin.unit}">
+
+            <!--nav tabs-->
+            <ul class="nav nav-tabs brd-none" id="myTab" role="tablist">
+                <block th:each="categoriedCoin : ${categoriedCoins}">
+                    <li class="nav-item">
+                        <a class="nav-link rd-0 py-10px px-20px fs-08 brd-none text-color"  href="#" data-toggle="tab" role="tab" th:id="${categoriedCoin.key.name} + 'TabId'" th:onclick="'onSelectedCategoriedCoinClick(\'' + ${categoriedCoin.key.name} + '\');'">
+                            <!--<img th:src="${categoriedCoin.key.logoUrl}" style="width:22px;height:22px;"/>&nbsp;-->
+                            <span th:text="${categoriedCoin.key.unit} + ' ' + #{dashboard.home.transaction.tab}"/>
+                        </a>
+                    </li>
+                </block>
+            </ul>
+
+            <!--tab panes-->
+            <div class="tab-content mt-10px" id="myTabContent" style="background:#fff">
+                <!--Bitcoin tab-->
+                <div class="tab-pane fade show active">
+                    <div class="row">
+                        <!--거래현황-->
+                        <div class="col-lg-6">
+                            <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                <h4><i class="md md-keyboard-arrow-right text-primary"></i><span th:utext="#{dashboard.home.transaction.title}"></span></h4>
+                                <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.home.transaction.desc}"></span>
+                                <table class="table mb-0 text-center">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th th:utext="#{dashboard.home.transaction.column1}"></th>
+                                        <th th:utext="#{dashboard.home.transaction.column2}"></th>
+                                        <th th:utext="#{dashboard.home.transaction.column3}"></th>
+                                        <th th:utext="#{dashboard.home.transaction.column4}"></th>
+                                        <th th:utext="#{dashboard.home.transaction.column5}"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="currentCoinBodyId">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--24H 거래 그래프-->
+                        <div class="col-lg-6">
+                            <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px">
+                                <h4><span id="graphSubCoin"></span>/<span id="graphBaseCoin"></span> <span th:utext="#{dashboard.home.graph.title}"></span></h4>
+                                <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.home.graph.desc}"></span>
+                                <div id="chart-with-area"></div>
+                                <div class="widget-chart text-center">
+                                    <ul class="list-inline m-t-15">
+                                        <li>
+                                            <h4 class="text-muted m-t-20"><i class="md md-file-upload text-primary"></i><span style="color:indianred" th:utext="#{dashboard.home.graph.max.price}"></span></h4>
+                                            <h4 class="m-b-0" id="maxPriceId"></h4>
+                                        </li>
+                                        <li>
+                                            <h4 class="text-muted m-t-20"><i class="md md-file-download text-primary"></i><span style="color:#00b19d" th:utext="#{dashboard.home.graph.min.price}"></span></h4>
+                                            <h4 class="m-b-0" id="minPriceId"></h4>
+                                        </li>
+                                        <li>
+                                            <h4 class="text-muted m-t-20"><i class="md md-keyboard-arrow-right text-primary"></i><span th:utext="#{dashboard.home.graph.avg.price}"></span></h4>
+                                            <h4 class="m-b-0" id="avgPriceId"></h4>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/bitcoin tab-->
+            </div>
+            <!--/tab panes-->
+        </div>
+        <!--/container-->
+
+        <div class="container">
+            <div class="row">
+                <div class="w-100 my-15px"></div>
+                <div class="col-lg-6">
+                    <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                        <h4><span th:utext="#{dashboard.home.ico.title}"></span></h4>
+                        <span class="fs-08 mb-15px span-inline" th:utext="#{dashboard.home.ico.desc}"></span>
+                        <div class="panel-body">
+                            <block th:each="recommendIcoSite : ${recommendIcoSites}">
+                                <div class="card-box widget-user">
+                                    <div>
+                                        <a th:href="${recommendIcoSite.url}" target="_blank">
+                                            <img th:src="${recommendIcoSite.imgUrl}" class="img-responsive img-circle" alt="user">
+                                        </a>
+                                        <div class="wid-u-info">
+                                            <h4 class="m-t-0 m-b-5" th:text="${recommendIcoSite.title}"></h4>
+                                            <p class="text-muted m-b-5 font-13" th:text="${recommendIcoSite.content}"></p>
+                                            <small class="text-warning"><b th:text="${recommendIcoSite.email}"></b></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </block>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="rd-5 bg-white p-30px mb-md-30px mb-sm-30px mb-xs-30px" style="height: 100%">
+                        <div class="row">
+
+                            <!--공지사항 tab-->
+                            <ul class="nav nav-tabs brd-none" id="myTab" role="tablist">
+                                <li class="nav-item"><a class="nav-link active rd-0 py-10px px-20px fs-08 mb-30px brd-none text-color" id="mainnotice-tab" data-toggle="tab" href="#mainnotice" role="tab" aria-controls="btc" aria-selected="true"><span th:utext="#{dashboard.home.notice.title}"></span></a></li>
+                                <li class="nav-item"><a class="nav-link rd-0 py-10px px-20px fs-08 mb-30px brd-none text-color" id="mainnews-tab" data-toggle="tab" href="#mainnews" role="tab" aria-controls="btcc" aria-selected="false"><span th:utext="#{dashboard.home.news.title}"></span></a></li>
+                            </ul>
+                            <div class="tab-content" id="mainnoticeTabContent" style="width:100%;">
+                                <!--메인 > 공지사항 tab-->
+                                <div class="tab-pane fade show active" id="mainnotice" role="tabpanel" aria-labelledby="mainnotice-tab">
+                                    <div class="bg-white">
+                                        <table class="table mb-0 text-center">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" th:utext="#{dashboard.home.notice.subject}"></th>
+                                                <th scope="col" th:utext="#{dashboard.home.notice.regdtm}"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="notice,iter : ${notices}">
+                                                    <td class="text-third-color fs-08"><div align="left"><a th:href="'notice_view?id=' + ${notice['id']}" th:text="${notice['title']}" style="color: black"></a></div></td>
+                                                    <td class="text-success fs-08" th:text="${notice['regDtm']}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--/메인 > 공지사항 tab-->
+
+                                <!--메인 > 보도자료 tab-->
+                                <div class="tab-pane fade" id="mainnews" role="tabpanel" aria-labelledby="mainnews-tab">
+                                    <div class="bg-white">
+                                        <table class="table mb-0 text-center">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col" th:utext="#{dashboard.home.news.subject}"></th>
+                                                <th scope="col" th:utext="#{dashboard.home.news.regdtm}"></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="news : ${newsList}">
+                                                <td class="text-third-color fs-08" align="left"><div align="left"><a th:href="${news['url']}" target="_blank" th:text="${news['title']}" style="color: black"></a></div></td>
+                                                <td class="text-success fs-08" th:text="${news['regDtm']}"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--/메인 > 보도자료tab-->
+                            </div>
+                            <!--/tab panes-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div th:include="./dashboard/footer :: footer"></div>
+    <!-- End Footer -->
+
+    <!--Go to top-->
+    <p id="back-top"><a href="#top"><i class="fa fa-angle-up"></i></a></p>
+
+    <script th:src="'js/common/utils.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/SimpleBaseProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/CommonProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/WalletProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/provider/TradeProvider.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/CommonService.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/DashboardService.js?dummy=' + ${version}"></script>
+    <script th:src="'js/service/TradeService.js?dummy=' + ${version}"></script>
+
+    <script type="text/javascript">
+        utils.locale_init('[[${localeName}]]');
+
+        var commonService = new CommonService();
+        var dashboardService = new DashboardService();
+
+        //dashboardService.rendererCategoriedCurrentCoinInfos($("#baseCoin").val());
+
+        onSelectedCategoriedCoinClick($("#baseCoin").val());
+        onGraphClick($("#baseCoin").val(), $("#categoriedFirstSubCoin").val(), $("#baseCoinUnit").val(), $("#categoriedFirstSubCoinUnit").val());
+
+        function onSelectedCategoriedCoinClick(selectedCategoriedBaseCoin) {
+            dashboardService.rendererCategoriedCurrentCoinInfos(selectedCategoriedBaseCoin);
+        }
+
+        function onGraphClick(baseCoin, selectedCoin, baseCoinUnit, selectedCoinUnit) {
+            commonService.renderer24hGraphData(baseCoin, selectedCoin, baseCoinUnit, selectedCoinUnit);
+        }
+    </script>
+</body>
+</html>

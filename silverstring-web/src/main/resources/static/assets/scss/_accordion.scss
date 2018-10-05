@@ -1,0 +1,70 @@
+/*=============================================*/
+/* Accordion */
+/*=============================================*/
+.panel-group {
+	
+	.panel {
+		border: 1px solid #eee;
+		& + .panel {
+			margin-top: -1px;
+		}
+		.panel-title {
+			clear: both;
+			overflow: hidden;
+			line-height: inherit;
+			margin-bottom: 0;
+			> a {
+				display: block;
+				padding: 15px;
+				background-color: #eee;
+				color: #1c1c1c;
+				font-weight: 400;
+				font-family: 'Roboto', sans-serif;
+				position: relative;
+				font-size: 20px;
+				&::before {
+					background-color: #fff;
+					color: #1c1c1c;
+					position: absolute;
+					right: 20px;
+					width: 25px;
+					height: 25px;
+					font-size: 12px;
+					line-height: 25px;
+					text-align: center;
+					font-family: FontAwesome;
+					content: "\f068";
+					border-radius: 100%;
+					-webkit-border-radius: 100%;
+					margin-top: auto;
+					margin-bottom: auto;
+					top: 0;
+					bottom: 0;
+				}
+				&.collapsed {
+					background-color: #fff;
+					&::before {
+						content:"\f067";
+					}
+				}
+				&:hover, :active, :focus {
+					outline: 0;
+				}
+			}
+			
+		 }
+		.panel-collapse {
+			padding: 30px;
+		}
+	}
+	
+	&.arrow {
+		.panel-title {
+			> a {
+				&::before {content:"\f077";}
+				&.collapsed::before {content:"\f078";}
+			}
+		}
+	}
+
+}

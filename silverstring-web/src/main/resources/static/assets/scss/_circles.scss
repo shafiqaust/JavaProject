@@ -1,0 +1,15 @@
+/*=============================================*/
+/* Circles */
+/*=============================================*/
+.counter-wheel {
+	&.wheel-st-1, &.wheel-st-2 {
+		width: 10em;
+		height: 10em;
+		border: 1px solid transparent;
+		padding: .15em;
+		font-family: inherit;
+	}	
+	&.wheel-st-2 {
+		padding: .5em;
+	}
+}

@@ -1,0 +1,15 @@
+/*===================================
+	Coin tabs
+===================================*/
+ul.nav {
+	li {
+		a {
+			background-color: $gray-100;
+
+			&.active {
+				background-color: $first-color !important;
+				color: #fff !important;
+			}
+		}
+	}
+}

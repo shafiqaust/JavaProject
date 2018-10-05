@@ -1,0 +1,47 @@
+// Medium devices (tablets, 768px and up)
+@include media-breakpoint-down(md) { 
+	
+	header {
+		nav {
+			.navbar-brand {
+		    	order: 1;
+    			margin-right: auto;
+			}
+			a.btn {
+				order: 2;
+			}
+			.search-bar {
+				order: 3;
+			}
+			.account-bar {
+				order: 4;
+			}
+			.navbar-toggler {
+				order: 5;
+			}
+			.navbar-collapse {
+				order: 6;
+				margin-bottom: 30px;
+			}
+			
+			ul.navbar-nav li a {
+				padding-top: 15px !important;
+				padding-bottom: 15px !important;
+			}
+			ul.navbar-nav li>.dropdown-menu {
+				&::after {
+					display: none !important;
+				}
+				min-width: 100% !important;
+    			max-width: 100% !important;
+			}
+		}
+	}
+	
+	aside {
+		.aside-container {
+			width: 100%;
+		}
+	}
+	
+}/*/md media query*/

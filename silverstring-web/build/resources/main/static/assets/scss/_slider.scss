@@ -1,0 +1,47 @@
+/*=============================================*/
+/* Slider */
+/*=============================================*/
+.owl-carousel {
+	&#clients-slider {
+		.owl-item {
+			>div {
+				padding-bottom: 100px;
+				position: relative;
+				&::after {
+					display: block;
+					position: absolute;
+					content: "";
+					left: 40px;
+					bottom: 95px;
+					width: 10px;
+					height: 10px;
+					transform: rotate(45deg);
+					-webkit-transform: rotate(45deg);
+					-moz-transform: rotate(45deg);
+					-o-transform: rotate(45deg);
+					-ms-transform: rotate(45deg);
+					border-right: 1px solid rgba(0,0,0,.15);
+					border-bottom: 1px solid rgba(0,0,0,.15);
+					background-color: #fff;
+				}
+				.data-client {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					img {
+						width: 80px !important
+					}
+				}
+			}
+		}
+	}
+}
+
+/*=============*/
+/*For smoothing nonstop autoplay*/
+/*=============*/
+.owl-stage {
+    -webkit-transition-timing-function: linear !important; 
+    transition-timing-function: linear !important;
+}

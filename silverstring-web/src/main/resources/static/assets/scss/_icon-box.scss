@@ -1,0 +1,24 @@
+/*=============================================*/
+/* Icon box */
+/*=============================================*/
+.icon-box {
+	&.icon-box-st-2 {
+		position: relative;
+		padding-left: 90px;
+		.icon-wrap {
+			display: flex;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 70px;
+			height: 70px;
+			border: 2px solid #ccc;
+			border-radius: 100%;
+			-webkit-border-radius: 100%;
+			align-items: center;
+			-webkit-align-items: center;
+			justify-content: center;
+			-webkit-justify-content: center;
+		}
+	}
+}

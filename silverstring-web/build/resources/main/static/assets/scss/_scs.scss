@@ -1,0 +1,1137 @@
+/*===============================================
+   Author    : GoldenTemp
+   Website   : goldentemp.com
+   File      : Smart CSS System (SCS)
+   Structure :
+	|- Visibility
+	|- Radius
+	|- Padding
+	|- Margin
+	|- Shadow
+	|- Border
+	|- Background color
+	|- Text color
+	|- Font size
+	|- Font weight
+	|- Line height
+	|- Letter spacing
+	|- background color opacity
+	|- Social networks
+	|- Transition
+	|- Opacity
+	|- Width
+	|- Height
+*/
+
+
+/*=============================================*/
+/* Visibility */
+/*=============================================*/
+.ov-hidden { overflow: hidden; }
+
+
+/*=============================================*/
+/* Radius */
+/*=============================================*/
+.rd-0 {
+	border-top-left-radius: 0 !important;
+	-webkit-border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	-webkit-border-top-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+	-webkit-border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	-webkit-border-bottom-right-radius: 0 !important;
+	border-radius: 0 !important;
+	-webkit-border-radius: 0 !important;
+}
+
+.rd-3 {
+	border-top-left-radius: 3px !important;
+	-webkit-border-top-left-radius: 3px !important;
+	border-top-right-radius: 3px !important;
+	-webkit-border-top-right-radius: 3px !important;
+	border-bottom-left-radius: 3px !important;
+	-webkit-border-bottom-left-radius: 3px !important;
+	border-bottom-right-radius: 3px !important;
+	-webkit-border-bottom-right-radius: 3px !important;
+	border-radius: 3px !important;
+	-webkit-border-radius: 3px !important;
+}
+
+.rd-5 {
+	border-top-left-radius: 5px !important;
+	-webkit-border-top-left-radius: 5px !important;
+	border-top-right-radius: 5px !important;
+	-webkit-border-top-right-radius: 5px !important;
+	border-bottom-left-radius: 5px !important;
+	-webkit-border-bottom-left-radius: 5px !important;
+	border-bottom-right-radius: 5px !important;
+	-webkit-border-bottom-right-radius: 5px !important;
+	border-radius: 5px !important;
+	-webkit-border-radius: 5px !important;
+}
+
+.rd-10 {
+	border-top-left-radius: 10px !important;
+	-webkit-border-top-left-radius: 10px !important;
+	border-top-right-radius: 10px !important;
+	-webkit-border-top-right-radius: 10px !important;
+	border-bottom-left-radius: 10px !important;
+	-webkit-border-bottom-left-radius: 10px !important;
+	border-bottom-right-radius: 10px !important;
+	-webkit-border-bottom-right-radius: 10px !important;
+	border-radius: 10px !important;
+	-webkit-border-radius: 10px !important;
+}
+
+.rd-50 {
+	border-top-left-radius: 50px !important;
+	-webkit-border-top-left-radius: 50px !important;
+	border-top-right-radius: 50px !important;
+	-webkit-border-top-right-radius: 50px !important;
+	border-bottom-left-radius: 50px !important;
+	-webkit-border-bottom-left-radius: 50px !important;
+	border-bottom-right-radius: 50px !important;
+	-webkit-border-bottom-right-radius: 50px !important;
+	border-radius: 50px !important;
+	-webkit-border-radius: 50px !important;
+}
+
+.rd-100 {
+	border-top-left-radius: 100px !important;
+	-webkit-border-top-left-radius: 100px !important;
+	border-top-right-radius: 100px !important;
+	-webkit-border-top-right-radius: 100px !important;
+	border-bottom-left-radius: 100px !important;
+	-webkit-border-bottom-left-radius: 100px !important;
+	border-bottom-right-radius: 100px !important;
+	-webkit-border-bottom-right-radius: 100px !important;
+	border-radius: 100px !important;
+	-webkit-border-radius: 100px !important;
+}
+
+.rd-no-tr {
+	border-top-right-radius: 0 !important;
+	-webkit-border-top-right-radius: 0 !important;
+}
+
+.rd-no-tl {
+	border-top-left-radius: 0 !important;
+	-webkit-border-top-left-radius: 0 !important;
+}
+
+.rd-no-br {
+	border-bottom-right-radius: 0 !important;
+	-webkit-border-bottom-right-radius: 0 !important;
+}
+
+.rd-no-bl {
+	border-bottom-left-radius: 0 !important;
+	-webkit-border-bottom-left-radius: 0 !important;
+}
+
+/*=============================================*/
+/* Padding */
+/*=============================================*/
+.p-1px         {padding: 1px}
+.p-2px         {padding: 2px}
+.p-3px         {padding: 3px}
+.p-4px         {padding: 4px}
+.p-5px         {padding: 5px}
+.p-6px         {padding: 6px}
+.p-7px         {padding: 7px}
+.p-8px         {padding: 8px}
+.p-9px         {padding: 9px}
+.p-10px        {padding: 10px}
+.p-15px        {padding: 15px}
+.p-20px        {padding: 20px}
+.p-25px        {padding: 25px}
+.p-30px        {padding: 30px}
+.p-35px        {padding: 35px}
+.p-40px        {padding: 40px}
+.p-45px        {padding: 45px}
+.p-50px        {padding: 50px}
+.p-55px        {padding: 55px}
+.p-60px        {padding: 60px}
+.p-65px        {padding: 65px}
+.p-70px        {padding: 70px}
+.p-75px        {padding: 75px}
+.p-80px        {padding: 80px}
+.p-85px        {padding: 85px}
+.p-90px        {padding: 90px}
+.p-95px        {padding: 95px}
+.p-100px       {padding: 100px}
+.p-150px       {padding: 150px}
+.p-200px       {padding: 200px}
+.p-250px       {padding: 250px}
+.p-300px       {padding: 300px}
+.p-350px       {padding: 350px}
+.p-400px       {padding: 400px}
+.p-450px       {padding: 450px}
+.p-500px       {padding: 500px}
+
+.pt-1px         {padding-top: 1px}
+.pt-2px         {padding-top: 2px}
+.pt-3px         {padding-top: 3px}
+.pt-4px         {padding-top: 4px}
+.pt-5px         {padding-top: 5px}
+.pt-6px         {padding-top: 6px}
+.pt-7px         {padding-top: 7px}
+.pt-8px         {padding-top: 8px}
+.pt-9px         {padding-top: 9px}
+.pt-10px        {padding-top: 10px}
+.pt-15px        {padding-top: 15px}
+.pt-20px        {padding-top: 20px}
+.pt-25px        {padding-top: 25px}
+.pt-30px        {padding-top: 30px}
+.pt-35px        {padding-top: 35px}
+.pt-40px        {padding-top: 40px}
+.pt-45px        {padding-top: 45px}
+.pt-50px        {padding-top: 50px}
+.pt-55px        {padding-top: 55px}
+.pt-60px        {padding-top: 60px}
+.pt-65px        {padding-top: 65px}
+.pt-70px        {padding-top: 70px}
+.pt-75px        {padding-top: 75px}
+.pt-80px        {padding-top: 80px}
+.pt-85px        {padding-top: 85px}
+.pt-90px        {padding-top: 90px}
+.pt-95px        {padding-top: 95px}
+.pt-100px       {padding-top: 100px}
+.pt-150px       {padding-top: 150px}
+.pt-200px       {padding-top: 200px}
+.pt-250px       {padding-top: 250px}
+.pt-300px       {padding-top: 300px}
+.pt-350px       {padding-top: 350px}
+.pt-400px       {padding-top: 400px}
+.pt-450px       {padding-top: 450px}
+.pt-500px       {padding-top: 500px}
+
+.pb-1px         {padding-bottom: 1px}
+.pb-2px         {padding-bottom: 2px}
+.pb-3px         {padding-bottom: 3px}
+.pb-4px         {padding-bottom: 4px}
+.pb-5px         {padding-bottom: 5px}
+.pb-6px         {padding-bottom: 6px}
+.pb-7px         {padding-bottom: 7px}
+.pb-8px         {padding-bottom: 8px}
+.pb-9px         {padding-bottom: 9px}
+.pb-10px        {padding-bottom: 10px}
+.pb-15px        {padding-bottom: 15px}
+.pb-20px        {padding-bottom: 20px}
+.pb-25px        {padding-bottom: 25px}
+.pb-30px        {padding-bottom: 30px}
+.pb-35px        {padding-bottom: 35px}
+.pb-40px        {padding-bottom: 40px}
+.pb-45px        {padding-bottom: 45px}
+.pb-50px        {padding-bottom: 50px}
+.pb-55px        {padding-bottom: 55px}
+.pb-60px        {padding-bottom: 60px}
+.pb-65px        {padding-bottom: 65px}
+.pb-70px        {padding-bottom: 70px}
+.pb-75px        {padding-bottom: 75px}
+.pb-80px        {padding-bottom: 80px}
+.pb-85px        {padding-bottom: 85px}
+.pb-90px        {padding-bottom: 90px}
+.pb-95px        {padding-bottom: 95px}
+.pb-100px       {padding-bottom: 100px}
+.pb-150px       {padding-bottom: 150px}
+.pb-200px       {padding-bottom: 200px}
+.pb-250px       {padding-bottom: 250px}
+.pb-300px       {padding-bottom: 300px}
+.pb-350px       {padding-bottom: 350px}
+.pb-400px       {padding-bottom: 400px}
+.pb-450px       {padding-bottom: 450px}
+.pb-500px       {padding-bottom: 500px}
+
+.pr-1px         {padding-right: 1px}
+.pr-2px         {padding-right: 2px}
+.pr-3px         {padding-right: 3px}
+.pr-4px         {padding-right: 4px}
+.pr-5px         {padding-right: 5px}
+.pr-6px         {padding-right: 6px}
+.pr-7px         {padding-right: 7px}
+.pr-8px         {padding-right: 8px}
+.pr-9px         {padding-right: 9px}
+.pr-10px        {padding-right: 10px}
+.pr-15px        {padding-right: 15px}
+.pr-20px        {padding-right: 20px}
+.pr-25px        {padding-right: 25px}
+.pr-30px        {padding-right: 30px}
+.pr-35px        {padding-right: 35px}
+.pr-40px        {padding-right: 40px}
+.pr-45px        {padding-right: 45px}
+.pr-50px        {padding-right: 50px}
+.pr-55px        {padding-right: 55px}
+.pr-60px        {padding-right: 60px}
+.pr-65px        {padding-right: 65px}
+.pr-70px        {padding-right: 70px}
+.pr-75px        {padding-right: 75px}
+.pr-80px        {padding-right: 80px}
+.pr-85px        {padding-right: 85px}
+.pr-90px        {padding-right: 90px}
+.pr-95px        {padding-right: 95px}
+.pr-100px       {padding-right: 100px}
+.pr-150px       {padding-right: 150px}
+.pr-200px       {padding-right: 200px}
+.pr-250px       {padding-right: 250px}
+.pr-300px       {padding-right: 300px}
+.pr-350px       {padding-right: 350px}
+.pr-400px       {padding-right: 400px}
+.pr-450px       {padding-right: 450px}
+.pr-500px       {padding-right: 500px}
+
+.pl-1px         {padding-left: 1px}
+.pl-2px         {padding-left: 2px}
+.pl-3px         {padding-left: 3px}
+.pl-4px         {padding-left: 4px}
+.pl-5px         {padding-left: 5px}
+.pl-6px         {padding-left: 6px}
+.pl-7px         {padding-left: 7px}
+.pl-8px         {padding-left: 8px}
+.pl-9px         {padding-left: 9px}
+.pl-10px        {padding-left: 10px}
+.pl-15px        {padding-left: 15px}
+.pl-20px        {padding-left: 20px}
+.pl-25px        {padding-left: 25px}
+.pl-30px        {padding-left: 30px}
+.pl-35px        {padding-left: 35px}
+.pl-40px        {padding-left: 40px}
+.pl-45px        {padding-left: 45px}
+.pl-50px        {padding-left: 50px}
+.pl-55px        {padding-left: 55px}
+.pl-60px        {padding-left: 60px}
+.pl-65px        {padding-left: 65px}
+.pl-70px        {padding-left: 70px}
+.pl-75px        {padding-left: 75px}
+.pl-80px        {padding-left: 80px}
+.pl-85px        {padding-left: 85px}
+.pl-90px        {padding-left: 90px}
+.pl-95px        {padding-left: 95px}
+.pl-100px       {padding-left: 100px}
+.pl-150px       {padding-left: 150px}
+.pl-200px       {padding-left: 200px}
+.pl-250px       {padding-left: 250px}
+.pl-300px       {padding-left: 300px}
+.pl-350px       {padding-left: 350px}
+.pl-400px       {padding-left: 400px}
+.pl-450px       {padding-left: 450px}
+.pl-500px       {padding-left: 500px}
+
+.px-1px         {padding-right: 1px;   padding-left: 1px;}
+.px-2px         {padding-right: 2px;   padding-left: 2px;}
+.px-3px         {padding-right: 3px;   padding-left: 3px;}
+.px-4px         {padding-right: 4px;   padding-left: 4px;}
+.px-5px         {padding-right: 5px;   padding-left: 5px;}
+.px-6px         {padding-right: 6px;   padding-left: 6px;}
+.px-7px         {padding-right: 7px;   padding-left: 7px;}
+.px-8px         {padding-right: 8px;   padding-left: 8px;}
+.px-9px         {padding-right: 9px;   padding-left: 9px;}
+.px-10px        {padding-right: 10px;  padding-left: 10px;}
+.px-15px        {padding-right: 15px;  padding-left: 15px;}
+.px-20px        {padding-right: 20px;  padding-left: 20px;}
+.px-25px        {padding-right: 25px;  padding-left: 25px;}
+.px-30px        {padding-right: 30px;  padding-left: 30px;}
+.px-35px        {padding-right: 35px;  padding-left: 35px;}
+.px-40px        {padding-right: 40px;  padding-left: 40px;}
+.px-45px        {padding-right: 45px;  padding-left: 45px;}
+.px-50px        {padding-right: 50px;  padding-left: 50px;}
+.px-55px        {padding-right: 55px;  padding-left: 55px;}
+.px-60px        {padding-right: 60px;  padding-left: 60px;}
+.px-65px        {padding-right: 65px;  padding-left: 65px;}
+.px-70px        {padding-right: 70px;  padding-left: 70px;}
+.px-75px        {padding-right: 75px;  padding-left: 75px;}
+.px-80px        {padding-right: 80px;  padding-left: 80px;}
+.px-85px        {padding-right: 85px;  padding-left: 85px;}
+.px-90px        {padding-right: 90px;  padding-left: 90px;}
+.px-95px        {padding-right: 95px;  padding-left: 95px;}
+.px-100px       {padding-right: 100px; padding-left: 100px;}
+.px-150px       {padding-right: 150px; padding-left: 150px;}
+.px-200px       {padding-right: 200px; padding-left: 200px;}
+.px-250px       {padding-right: 250px; padding-left: 250px;}
+.px-300px       {padding-right: 300px; padding-left: 300px;}
+.px-350px       {padding-right: 350px; padding-left: 350px;}
+.px-400px       {padding-right: 400px; padding-left: 400px;}
+.px-450px       {padding-right: 450px; padding-left: 450px;}
+.px-500px       {padding-right: 500px; padding-left: 500px;}
+
+.py-1px         {padding-top: 1px;   padding-bottom: 1px;}
+.py-2px         {padding-top: 2px;   padding-bottom: 2px;}
+.py-3px         {padding-top: 3px;   padding-bottom: 3px;}
+.py-4px         {padding-top: 4px;   padding-bottom: 4px;}
+.py-5px         {padding-top: 5px;   padding-bottom: 5px;}
+.py-6px         {padding-top: 6px;   padding-bottom: 6px;}
+.py-7px         {padding-top: 7px;   padding-bottom: 7px;}
+.py-8px         {padding-top: 8px;   padding-bottom: 8px;}
+.py-9px         {padding-top: 9px;   padding-bottom: 9px;}
+.py-10px        {padding-top: 10px;  padding-bottom: 10px;}
+.py-15px        {padding-top: 15px;  padding-bottom: 15px;}
+.py-20px        {padding-top: 20px;  padding-bottom: 20px;}
+.py-25px        {padding-top: 25px;  padding-bottom: 25px;}
+.py-30px        {padding-top: 30px;  padding-bottom: 30px;}
+.py-35px        {padding-top: 35px;  padding-bottom: 35px;}
+.py-40px        {padding-top: 40px;  padding-bottom: 40px;}
+.py-45px        {padding-top: 45px;  padding-bottom: 45px;}
+.py-50px        {padding-top: 50px;  padding-bottom: 50px;}
+.py-55px        {padding-top: 55px;  padding-bottom: 55px;}
+.py-60px        {padding-top: 60px;  padding-bottom: 60px;}
+.py-65px        {padding-top: 65px;  padding-bottom: 65px;}
+.py-70px        {padding-top: 70px;  padding-bottom: 70px;}
+.py-75px        {padding-top: 75px;  padding-bottom: 75px;}
+.py-80px        {padding-top: 80px;  padding-bottom: 80px;}
+.py-85px        {padding-top: 85px;  padding-bottom: 85px;}
+.py-90px        {padding-top: 90px;  padding-bottom: 90px;}
+.py-95px        {padding-top: 95px;  padding-bottom: 95px;}
+.py-100px       {padding-top: 100px; padding-bottom: 100px;}
+.py-150px       {padding-top: 150px; padding-bottom: 150px;}
+.py-200px       {padding-top: 200px; padding-bottom: 200px;}
+.py-250px       {padding-top: 250px; padding-bottom: 250px;}
+.py-300px       {padding-top: 300px; padding-bottom: 300px;}
+.py-350px       {padding-top: 350px; padding-bottom: 350px;}
+.py-400px       {padding-top: 400px; padding-bottom: 400px;}
+.py-450px       {padding-top: 450px; padding-bottom: 450px;}
+.py-500px       {padding-top: 500px; padding-bottom: 500px;}
+
+
+
+/*=============================================*/
+/* Margin */
+/*=============================================*/
+.m-1px         {margin: 1px}
+.m-2px         {margin: 2px}
+.m-3px         {margin: 3px}
+.m-4px         {margin: 4px}
+.m-5px         {margin: 5px}
+.m-6px         {margin: 6px}
+.m-7px         {margin: 7px}
+.m-8px         {margin: 8px}
+.m-9px         {margin: 9px}
+.m-10px        {margin: 10px}
+.m-15px        {margin: 15px}
+.m-20px        {margin: 20px}
+.m-25px        {margin: 25px}
+.m-30px        {margin: 30px}
+.m-35px        {margin: 35px}
+.m-40px        {margin: 40px}
+.m-45px        {margin: 45px}
+.m-50px        {margin: 50px}
+.m-55px        {margin: 55px}
+.m-60px        {margin: 60px}
+.m-65px        {margin: 65px}
+.m-70px        {margin: 70px}
+.m-75px        {margin: 75px}
+.m-80px        {margin: 80px}
+.m-85px        {margin: 85px}
+.m-90px        {margin: 90px}
+.m-95px        {margin: 95px}
+.m-100px       {margin: 100px}
+.m-150px       {margin: 150px}
+.m-200px       {margin: 200px}
+.m-250px       {margin: 250px}
+.m-300px       {margin: 300px}
+.m-350px       {margin: 350px}
+.m-400px       {margin: 400px}
+.m-450px       {margin: 450px}
+.m-500px       {margin: 500px}
+
+.mt-1px         {margin-top: 1px}
+.mt-2px         {margin-top: 2px}
+.mt-3px         {margin-top: 3px}
+.mt-4px         {margin-top: 4px}
+.mt-5px         {margin-top: 5px}
+.mt-6px         {margin-top: 6px}
+.mt-7px         {margin-top: 7px}
+.mt-8px         {margin-top: 8px}
+.mt-9px         {margin-top: 9px}
+.mt-10px        {margin-top: 10px}
+.mt-15px        {margin-top: 15px}
+.mt-20px        {margin-top: 20px}
+.mt-25px        {margin-top: 25px}
+.mt-30px        {margin-top: 30px}
+.mt-35px        {margin-top: 35px}
+.mt-40px        {margin-top: 40px}
+.mt-45px        {margin-top: 45px}
+.mt-50px        {margin-top: 50px}
+.mt-55px        {margin-top: 55px}
+.mt-60px        {margin-top: 60px}
+.mt-65px        {margin-top: 65px}
+.mt-70px        {margin-top: 70px}
+.mt-75px        {margin-top: 75px}
+.mt-80px        {margin-top: 80px}
+.mt-85px        {margin-top: 85px}
+.mt-90px        {margin-top: 90px}
+.mt-95px        {margin-top: 95px}
+.mt-100px       {margin-top: 100px}
+.mt-150px       {margin-top: 150px}
+.mt-200px       {margin-top: 200px}
+.mt-250px       {margin-top: 250px}
+.mt-300px       {margin-top: 300px}
+.mt-350px       {margin-top: 350px}
+.mt-400px       {margin-top: 400px}
+.mt-450px       {margin-top: 450px}
+.mt-500px       {margin-top: 500px}
+
+.mb-1px         {margin-bottom: 1px}
+.mb-2px         {margin-bottom: 2px}
+.mb-3px         {margin-bottom: 3px}
+.mb-4px         {margin-bottom: 4px}
+.mb-5px         {margin-bottom: 5px}
+.mb-6px         {margin-bottom: 6px}
+.mb-7px         {margin-bottom: 7px}
+.mb-8px         {margin-bottom: 8px}
+.mb-9px         {margin-bottom: 9px}
+.mb-10px        {margin-bottom: 10px}
+.mb-15px        {margin-bottom: 15px}
+.mb-20px        {margin-bottom: 20px}
+.mb-25px        {margin-bottom: 25px}
+.mb-30px        {margin-bottom: 30px}
+.mb-35px        {margin-bottom: 35px}
+.mb-40px        {margin-bottom: 40px}
+.mb-45px        {margin-bottom: 45px}
+.mb-50px        {margin-bottom: 50px}
+.mb-55px        {margin-bottom: 55px}
+.mb-60px        {margin-bottom: 60px}
+.mb-65px        {margin-bottom: 65px}
+.mb-70px        {margin-bottom: 70px}
+.mb-75px        {margin-bottom: 75px}
+.mb-80px        {margin-bottom: 80px}
+.mb-85px        {margin-bottom: 85px}
+.mb-90px        {margin-bottom: 90px}
+.mb-95px        {margin-bottom: 95px}
+.mb-100px       {margin-bottom: 100px}
+.mb-150px       {margin-bottom: 150px}
+.mb-200px       {margin-bottom: 200px}
+.mb-250px       {margin-bottom: 250px}
+.mb-300px       {margin-bottom: 300px}
+.mb-350px       {margin-bottom: 350px}
+.mb-400px       {margin-bottom: 400px}
+.mb-450px       {margin-bottom: 450px}
+.mb-500px       {margin-bottom: 500px}
+
+.mr-1px         {margin-right: 1px}
+.mr-2px         {margin-right: 2px}
+.mr-3px         {margin-right: 3px}
+.mr-4px         {margin-right: 4px}
+.mr-5px         {margin-right: 5px}
+.mr-6px         {margin-right: 6px}
+.mr-7px         {margin-right: 7px}
+.mr-8px         {margin-right: 8px}
+.mr-9px         {margin-right: 9px}
+.mr-10px        {margin-right: 10px}
+.mr-15px        {margin-right: 15px}
+.mr-20px        {margin-right: 20px}
+.mr-25px        {margin-right: 25px}
+.mr-30px        {margin-right: 30px}
+.mr-35px        {margin-right: 35px}
+.mr-40px        {margin-right: 40px}
+.mr-45px        {margin-right: 45px}
+.mr-50px        {margin-right: 50px}
+.mr-55px        {margin-right: 55px}
+.mr-60px        {margin-right: 60px}
+.mr-65px        {margin-right: 65px}
+.mr-70px        {margin-right: 70px}
+.mr-75px        {margin-right: 75px}
+.mr-80px        {margin-right: 80px}
+.mr-85px        {margin-right: 85px}
+.mr-90px        {margin-right: 90px}
+.mr-95px        {margin-right: 95px}
+.mr-100px       {margin-right: 100px}
+.mr-150px       {margin-right: 150px}
+.mr-200px       {margin-right: 200px}
+.mr-250px       {margin-right: 250px}
+.mr-300px       {margin-right: 300px}
+.mr-350px       {margin-right: 350px}
+.mr-400px       {margin-right: 400px}
+.mr-450px       {margin-right: 450px}
+.mr-500px       {margin-right: 500px}
+
+.ml-1px         {margin-left: 1px}
+.ml-2px         {margin-left: 2px}
+.ml-3px         {margin-left: 3px}
+.ml-4px         {margin-left: 4px}
+.ml-5px         {margin-left: 5px}
+.ml-6px         {margin-left: 6px}
+.ml-7px         {margin-left: 7px}
+.ml-8px         {margin-left: 8px}
+.ml-9px         {margin-left: 9px}
+.ml-10px        {margin-left: 10px}
+.ml-15px        {margin-left: 15px}
+.ml-20px        {margin-left: 20px}
+.ml-25px        {margin-left: 25px}
+.ml-30px        {margin-left: 30px}
+.ml-35px        {margin-left: 35px}
+.ml-40px        {margin-left: 40px}
+.ml-45px        {margin-left: 45px}
+.ml-50px        {margin-left: 50px}
+.ml-55px        {margin-left: 55px}
+.ml-60px        {margin-left: 60px}
+.ml-65px        {margin-left: 65px}
+.ml-70px        {margin-left: 70px}
+.ml-75px        {margin-left: 75px}
+.ml-80px        {margin-left: 80px}
+.ml-85px        {margin-left: 85px}
+.ml-90px        {margin-left: 90px}
+.ml-95px        {margin-left: 95px}
+.ml-100px       {margin-left: 100px}
+.ml-150px       {margin-left: 150px}
+.ml-200px       {margin-left: 200px}
+.ml-250px       {margin-left: 250px}
+.ml-300px       {margin-left: 300px}
+.ml-350px       {margin-left: 350px}
+.ml-400px       {margin-left: 400px}
+.ml-450px       {margin-left: 450px}
+.ml-500px       {margin-left: 500px}
+
+.mx-1px         {margin-right: 1px;   margin-left: 1px;}
+.mx-2px         {margin-right: 2px;   margin-left: 2px;}
+.mx-3px         {margin-right: 3px;   margin-left: 3px;}
+.mx-4px         {margin-right: 4px;   margin-left: 4px;}
+.mx-5px         {margin-right: 5px;   margin-left: 5px;}
+.mx-6px         {margin-right: 6px;   margin-left: 6px;}
+.mx-7px         {margin-right: 7px;   margin-left: 7px;}
+.mx-8px         {margin-right: 8px;   margin-left: 8px;}
+.mx-9px         {margin-right: 9px;   margin-left: 9px;}
+.mx-10px        {margin-right: 10px;  margin-left: 10px;}
+.mx-15px        {margin-right: 15px;  margin-left: 15px;}
+.mx-20px        {margin-right: 20px;  margin-left: 20px;}
+.mx-25px        {margin-right: 25px;  margin-left: 25px;}
+.mx-30px        {margin-right: 30px;  margin-left: 30px;}
+.mx-35px        {margin-right: 35px;  margin-left: 35px;}
+.mx-40px        {margin-right: 40px;  margin-left: 40px;}
+.mx-45px        {margin-right: 45px;  margin-left: 45px;}
+.mx-50px        {margin-right: 50px;  margin-left: 50px;}
+.mx-55px        {margin-right: 55px;  margin-left: 55px;}
+.mx-60px        {margin-right: 60px;  margin-left: 60px;}
+.mx-65px        {margin-right: 65px;  margin-left: 65px;}
+.mx-70px        {margin-right: 70px;  margin-left: 70px;}
+.mx-75px        {margin-right: 75px;  margin-left: 75px;}
+.mx-80px        {margin-right: 80px;  margin-left: 80px;}
+.mx-85px        {margin-right: 85px;  margin-left: 85px;}
+.mx-90px        {margin-right: 90px;  margin-left: 90px;}
+.mx-95px        {margin-right: 95px;  margin-left: 95px;}
+.mx-100px       {margin-right: 100px; margin-left: 100px;}
+.mx-150px       {margin-right: 150px; margin-left: 150px;}
+.mx-200px       {margin-right: 200px; margin-left: 200px;}
+.mx-250px       {margin-right: 250px; margin-left: 250px;}
+.mx-300px       {margin-right: 300px; margin-left: 300px;}
+.mx-350px       {margin-right: 350px; margin-left: 350px;}
+.mx-400px       {margin-right: 400px; margin-left: 400px;}
+.mx-450px       {margin-right: 450px; margin-left: 450px;}
+.mx-500px       {margin-right: 500px; margin-left: 500px;}
+
+.my-1px         {margin-top: 1px;   margin-bottom: 1px;}
+.my-2px         {margin-top: 2px;   margin-bottom: 2px;}
+.my-3px         {margin-top: 3px;   margin-bottom: 3px;}
+.my-4px         {margin-top: 4px;   margin-bottom: 4px;}
+.my-5px         {margin-top: 5px;   margin-bottom: 5px;}
+.my-6px         {margin-top: 6px;   margin-bottom: 6px;}
+.my-7px         {margin-top: 7px;   margin-bottom: 7px;}
+.my-8px         {margin-top: 8px;   margin-bottom: 8px;}
+.my-9px         {margin-top: 9px;   margin-bottom: 9px;}
+.my-10px        {margin-top: 10px;  margin-bottom: 10px;}
+.my-15px        {margin-top: 15px;  margin-bottom: 15px;}
+.my-20px        {margin-top: 20px;  margin-bottom: 20px;}
+.my-25px        {margin-top: 25px;  margin-bottom: 25px;}
+.my-30px        {margin-top: 30px;  margin-bottom: 30px;}
+.my-35px        {margin-top: 35px;  margin-bottom: 35px;}
+.my-40px        {margin-top: 40px;  margin-bottom: 40px;}
+.my-45px        {margin-top: 45px;  margin-bottom: 45px;}
+.my-50px        {margin-top: 50px;  margin-bottom: 50px;}
+.my-55px        {margin-top: 55px;  margin-bottom: 55px;}
+.my-60px        {margin-top: 60px;  margin-bottom: 60px;}
+.my-65px        {margin-top: 65px;  margin-bottom: 65px;}
+.my-70px        {margin-top: 70px;  margin-bottom: 70px;}
+.my-75px        {margin-top: 75px;  margin-bottom: 75px;}
+.my-80px        {margin-top: 80px;  margin-bottom: 80px;}
+.my-85px        {margin-top: 85px;  margin-bottom: 85px;}
+.my-90px        {margin-top: 90px;  margin-bottom: 90px;}
+.my-95px        {margin-top: 95px;  margin-bottom: 95px;}
+.my-100px       {margin-top: 100px; margin-bottom: 100px;}
+.my-150px       {margin-top: 150px; margin-bottom: 150px;}
+.my-200px       {margin-top: 200px; margin-bottom: 200px;}
+.my-250px       {margin-top: 250px; margin-bottom: 250px;}
+.my-300px       {margin-top: 300px; margin-bottom: 300px;}
+.my-350px       {margin-top: 350px; margin-bottom: 350px;}
+.my-400px       {margin-top: 400px; margin-bottom: 400px;}
+.my-450px       {margin-top: 450px; margin-bottom: 450px;}
+.my-500px       {margin-top: 500px; margin-bottom: 500px;}
+
+
+
+/*=============================================*/
+/* Shadow */
+/*=============================================*/
+.hover-small-shadow:hover, .small-shadow {
+	box-shadow: 0 0 10px #888888;
+	-webkit-box-shadow: 0 0 10px #888888;
+}
+.hover-big-shadow:hover, .big-shadow {
+	box-shadow: 0 0 30px #888888;
+	-webkit-box-shadow: 0 0 30px #888888;
+}
+.hover-small-shadow-dark:hover, .small-shadow-dark {
+	box-shadow: 0 0 10px #222;
+	-webkit-box-shadow: 0 0 10px #222;
+}
+.hover-big-shadow-dark:hover, .big-shadow-dark {
+	box-shadow: 0 0 30px #222;
+	-webkit-box-shadow: 0 0 30px #222;
+}
+.shadow-wrap {
+	position: relative;
+	z-index: 1;
+}
+.shadow-split, .hover-shadow-split:hover {
+		position: relative;
+	&::after, &::before {
+		top: 80%;
+		width: 50%;
+		z-index: -1;
+		content: "";
+		bottom: 15px;
+		max-width: 300px;
+		position: absolute;
+	}
+	&::after {
+		left: auto;
+		right: 15px;
+		transform: rotate(3deg);
+		box-shadow: 0 15px 10px #999;
+	}
+	&::before {
+		right: auto;
+		left: 15px;
+		transform: rotate(-3deg);
+		box-shadow: 0 15px 10px #999;
+	}
+}
+/*=============================================*/
+/* Border */
+/*=============================================*/
+.brd-none 			   {border: none !important;}
+/*border style*/
+.brd-thin-solid    {border-width: 1px; border-style: solid;}
+.brd-thin-dashed   {border-width: 1px; border-style: dashed;}
+.brd-thick-solid   {border-width: 2px; border-style: solid;}
+.brd-thick-dashed  {border-width: 2px; border-style: dashed;}
+.brd-strong-solid  {border-width: 4px; border-style: solid;}
+.brd-strong-dashed {border-width: 4px; border-style: dashed;}
+/*border color*/
+.brd-primary 	   {border-color: $blue;}
+.brd-success 	   {border-color: $green;}
+.brd-warning 	   {border-color: $yellow;}
+.brd-danger 	   {border-color: $red;}
+.brd-info 		   {border-color: $cyan;}
+.brd-inverse 	   {border-color: $gray-800;}
+.brd-gray-900 	   {border-color: $gray-900;}
+.brd-gray-800 	   {border-color: $gray-800;}
+.brd-gray-700 	   {border-color: $gray-700;}
+.brd-gray-600 	   {border-color: $gray-600;}
+.brd-gray-500 	   {border-color: $gray-500;}
+.brd-gray-400 	   {border-color: $gray-400;}
+.brd-gray-300 	   {border-color: $gray-300;}
+.brd-gray-200 	   {border-color: $gray-200;}
+.brd-gray-100 	   {border-color: $gray-100;}
+.brd-white 		   {border-color: $white;}
+.brd-black 		   {border-color: $black;}
+.brd-orange 	   {border-color: $orange;}
+.brd-indigo 	   {border-color: $indigo;}
+.brd-teal 		   {border-color: $teal;}
+.brd-pink 		   {border-color: $pink;}
+.brd-purple 	   {border-color: $purple;}
+.brd-gray-lightest {border-color: $gray-100;}
+.brd-gray-lighter  {border-color: $gray-200;}
+.brd-gray-light    {border-color: $gray-300;}
+.brd-gray          {border-color: $gray-600;}
+.brd-gray-dark     {border-color: $gray-700;}
+.brd-gray-darker   {border-color: $gray-800;}
+.brd-gray-darkest  {border-color: $gray-900;}
+
+/*=============================================*/
+/* Backgrond color */
+/*=============================================*/
+.bg-transparent     {background-color: transparent !important;}
+.bg-primary 	    {background-color: $blue;}
+.bg-success 	    {background-color: $green;}
+.bg-warning 	    {background-color: $yellow;}
+.bg-danger 		    {background-color: $red;}
+.bg-info 		    {background-color: $cyan;}
+.bg-inverse 	    {background-color: $gray-800;}
+.bg-gray-900 	    {background-color: $gray-900;}
+.bg-gray-800 	    {background-color: $gray-800;}
+.bg-gray-700 	    {background-color: $gray-700;}
+.bg-gray-600 	    {background-color: $gray-600;}
+.bg-gray-500 	    {background-color: $gray-500;}
+.bg-gray-400 	    {background-color: $gray-400;}
+.bg-gray-300 	    {background-color: $gray-300;}
+.bg-gray-200 	    {background-color: $gray-200;}
+.bg-gray-100 	    {background-color: $gray-100;}
+.bg-white 		    {background-color: $white;}
+.bg-black 		    {background-color: $black;}
+.bg-orange 		    {background-color: $orange;}
+.bg-indigo 		    {background-color: $indigo;}
+.bg-teal 		    {background-color: $teal;}
+.bg-pink 		    {background-color: $pink;}
+.bg-purple 		    {background-color: $purple;}
+.bg-gray-lightest   {background-color: $gray-100;}
+.bg-gray-lighter    {background-color: $gray-200;}
+.bg-gray-light      {background-color: $gray-300;}
+.bg-gray            {background-color: $gray-600;}
+.bg-gray-dark       {background-color: $gray-700;}
+.bg-gray-darker     {background-color: $gray-800;}
+.bg-gray-darkest    {background-color: $gray-900;}
+
+/*=============================================*/
+/* Text color */
+/*=============================================*/
+.text-primary 	    {color: $blue;}
+.text-success 	    {color: $green;}
+.text-warning 	    {color: $yellow;}
+.text-danger 		{color: $red;}
+.text-info 		    {color: $cyan;}
+.text-inverse 	    {color: $gray-800;}
+.text-gray-900 	    {color: $gray-900;}
+.text-gray-800 	    {color: $gray-800;}
+.text-gray-700 	    {color: $gray-700;}
+.text-gray-600 	    {color: $gray-600;}
+.text-gray-500 	    {color: $gray-500;}
+.text-gray-400 	    {color: $gray-400;}
+.text-gray-300 	    {color: $gray-300;}
+.text-gray-200 	    {color: $gray-200;}
+.text-gray-100 	    {color: $gray-100;}
+.text-white 		{color: $white;}
+.text-black 		{color: $black;}
+.text-orange 		{color: $orange;}
+.text-indigo 		{color: $indigo;}
+.text-teal 		    {color: $teal;}
+.text-pink 		    {color: $pink;}
+.text-purple 		{color: $purple;}
+.text-gray-lightest {color: $gray-100;}
+.text-gray-lighter  {color: $gray-200;}
+.text-gray-light    {color: $gray-300;}
+.text-gray          {color: $gray-600;}
+.text-gray-dark     {color: $gray-700;}
+.text-gray-darker   {color: $gray-800;}
+.text-gray-darkest  {color: $gray-900;}
+
+/*=============================================*/
+/* Font size */
+/*=============================================*/
+.fs-0_7   {font-size: .7rem  !important;}
+.fs-0_8   {font-size: .8rem  !important;}
+.fs-0_9   {font-size: .9rem  !important;}
+.fs-1 	  {font-size: 1rem   !important;}
+.fs-1_1   {font-size: 1.1rem !important;}
+.fs-1_2   {font-size: 1.2rem !important;}
+.fs-1_3   {font-size: 1.3rem !important;}
+.fs-1_4   {font-size: 1.4rem !important;}
+.fs-1_5   {font-size: 1.5rem !important;}
+.fs-1_6   {font-size: 1.6rem !important;}
+.fs-1_7   {font-size: 1.7rem !important;}
+.fs-1_8   {font-size: 1.8rem !important;}
+.fs-1_9   {font-size: 1.9rem !important;}
+.fs-2 	  {font-size: 2rem   !important;}
+.fs-3 	  {font-size: 3rem   !important;}
+.fs-4 	  {font-size: 4rem   !important;}
+.fs-5 	  {font-size: 5rem   !important;}
+.fs-6 	  {font-size: 6rem   !important;}
+.fs-7 	  {font-size: 7rem   !important;}
+.fs-8 	  {font-size: 8rem   !important;}
+.fs-9 	  {font-size: 9rem   !important;}
+.fs-10 	  {font-size: 10rem  !important;}
+.fs-15 	  {font-size: 15rem  !important;}
+.fs-20 	  {font-size: 20rem  !important;}
+
+/*=============================================*/
+/* Font weight */
+/*=============================================*/
+.fw-100   {font-weight: 100;}
+.fw-200   {font-weight: 200;}
+.fw-300   {font-weight: 300;}
+.fw-400   {font-weight: 400;}
+.fw-500   {font-weight: 500;}
+.fw-600   {font-weight: 600;}
+.fw-700   {font-weight: 700;}
+.fw-800   {font-weight: 800;}
+.fw-900   {font-weight: 900;}
+
+/*=============================================*/
+/* Line height */
+/*=============================================*/
+.lh-1     {line-height: 1px}
+.lh-2     {line-height: 2px}
+.lh-3     {line-height: 3px}
+.lh-4     {line-height: 4px}
+.lh-5     {line-height: 5px}
+.lh-6     {line-height: 6px}
+.lh-7     {line-height: 7px}
+.lh-8     {line-height: 8px}
+.lh-9     {line-height: 9px}
+.lh-10    {line-height: 10px}
+.lh-15    {line-height: 15px}
+.lh-20    {line-height: 20px}
+.lh-25    {line-height: 25px}
+.lh-30    {line-height: 30px}
+.lh-35    {line-height: 35px}
+.lh-40    {line-height: 40px}
+.lh-45    {line-height: 45px}
+.lh-50    {line-height: 50px}
+.lh-55    {line-height: 55px}
+.lh-60    {line-height: 60px}
+.lh-65    {line-height: 65px}
+.lh-70    {line-height: 70px}
+.lh-75    {line-height: 75px}
+.lh-80    {line-height: 80px}
+.lh-85    {line-height: 85px}
+.lh-90    {line-height: 90px}
+.lh-95    {line-height: 95px}
+.lh-100   {line-height: 100px}
+
+/*=============================================*/
+/* Letter spacing */
+/*=============================================*/
+.ls-1     {letter-spacing: 1px}
+.ls-2     {letter-spacing: 2px}
+.ls-3     {letter-spacing: 3px}
+.ls-4     {letter-spacing: 4px}
+.ls-5     {letter-spacing: 5px}
+
+/*=============================================*/
+/* background color opacity */
+/*=============================================*/
+
+.bg-alpha3-primary      {background-color: rgba($blue,     .3) !important}
+.bg-alpha3-success    	{background-color: rgba($green,    .3) !important}
+.bg-alpha3-warning    	{background-color: rgba($yellow,   .3) !important}
+.bg-alpha3-danger    	{background-color: rgba($red,      .3) !important}
+.bg-alpha3-info	        {background-color: rgba($cyan, 	   .3) !important}
+.bg-alpha3-inverse 	    {background-color: rgba($gray-800, .3) !important}
+.bg-alpha3-gray-900 	{background-color: rgba($gray-900, .3) !important}
+.bg-alpha3-gray-800 	{background-color: rgba($gray-800, .3) !important}
+.bg-alpha3-gray-700 	{background-color: rgba($gray-700, .3) !important}
+.bg-alpha3-gray-600 	{background-color: rgba($gray-600, .3) !important}
+.bg-alpha3-gray-500 	{background-color: rgba($gray-500, .3) !important}
+.bg-alpha3-gray-400 	{background-color: rgba($gray-400, .3) !important}
+.bg-alpha3-gray-300 	{background-color: rgba($gray-300, .3) !important}
+.bg-alpha3-gray-200 	{background-color: rgba($gray-200, .3) !important}
+.bg-alpha3-gray-100 	{background-color: rgba($gray-100, .3) !important}
+.bg-alpha3-white	 	{background-color: rgba($white,    .3) !important}
+.bg-alpha3-black	  	{background-color: rgba($black,    .3) !important}
+.bg-alpha3-orange	    {background-color: rgba($orange,   .3) !important}
+.bg-alpha3-indigo	    {background-color: rgba($indigo,   .3) !important}
+.bg-alpha3-teal	    	{background-color: rgba($teal,     .3) !important}
+.bg-alpha3-pink	    	{background-color: rgba($pink,     .3) !important}
+.bg-alpha3-purple		{background-color: rgba($purple,   .3) !important}
+
+.bg-alpha5-primary      {background-color: rgba($blue,     .5) !important}
+.bg-alpha5-success    	{background-color: rgba($green,    .5) !important}
+.bg-alpha5-warning    	{background-color: rgba($yellow,   .5) !important}
+.bg-alpha5-danger    	{background-color: rgba($red,      .5) !important}
+.bg-alpha5-info	        {background-color: rgba($cyan, 	   .5) !important}
+.bg-alpha5-inverse 	    {background-color: rgba($gray-800, .5) !important}
+.bg-alpha5-gray-900 	{background-color: rgba($gray-900, .5) !important}
+.bg-alpha5-gray-800 	{background-color: rgba($gray-800, .5) !important}
+.bg-alpha5-gray-700 	{background-color: rgba($gray-700, .5) !important}
+.bg-alpha5-gray-600 	{background-color: rgba($gray-600, .5) !important}
+.bg-alpha5-gray-500 	{background-color: rgba($gray-500, .5) !important}
+.bg-alpha5-gray-400 	{background-color: rgba($gray-400, .5) !important}
+.bg-alpha5-gray-300 	{background-color: rgba($gray-300, .5) !important}
+.bg-alpha5-gray-200 	{background-color: rgba($gray-200, .5) !important}
+.bg-alpha5-gray-100 	{background-color: rgba($gray-100, .5) !important}
+.bg-alpha5-white	 	{background-color: rgba($white,    .5) !important}
+.bg-alpha5-black	  	{background-color: rgba($black,    .5) !important}
+.bg-alpha5-orange	    {background-color: rgba($orange,   .5) !important}
+.bg-alpha5-indigo	    {background-color: rgba($indigo,   .5) !important}
+.bg-alpha5-teal	    	{background-color: rgba($teal,     .5) !important}
+.bg-alpha5-pink	    	{background-color: rgba($pink,     .5) !important}
+.bg-alpha5-purple		{background-color: rgba($purple,   .5) !important}
+
+.bg-alpha7-primary      {background-color: rgba($blue,     .7) !important}
+.bg-alpha7-success    	{background-color: rgba($green,    .7) !important}
+.bg-alpha7-warning    	{background-color: rgba($yellow,   .7) !important}
+.bg-alpha7-danger    	{background-color: rgba($red,      .7) !important}
+.bg-alpha7-info	        {background-color: rgba($cyan, 	   .7) !important}
+.bg-alpha7-inverse 	    {background-color: rgba($gray-800, .7) !important}
+.bg-alpha7-gray-900 	{background-color: rgba($gray-900, .7) !important}
+.bg-alpha7-gray-800 	{background-color: rgba($gray-800, .7) !important}
+.bg-alpha7-gray-700 	{background-color: rgba($gray-700, .7) !important}
+.bg-alpha7-gray-600 	{background-color: rgba($gray-600, .7) !important}
+.bg-alpha7-gray-500 	{background-color: rgba($gray-500, .7) !important}
+.bg-alpha7-gray-400 	{background-color: rgba($gray-400, .7) !important}
+.bg-alpha7-gray-300 	{background-color: rgba($gray-300, .7) !important}
+.bg-alpha7-gray-200 	{background-color: rgba($gray-200, .7) !important}
+.bg-alpha7-gray-100 	{background-color: rgba($gray-100, .7) !important}
+.bg-alpha7-white	 	{background-color: rgba($white,    .7) !important}
+.bg-alpha7-black	  	{background-color: rgba($black,    .7) !important}
+.bg-alpha7-orange	    {background-color: rgba($orange,   .7) !important}
+.bg-alpha7-indigo	    {background-color: rgba($indigo,   .7) !important}
+.bg-alpha7-teal	    	{background-color: rgba($teal,     .7) !important}
+.bg-alpha7-pink	    	{background-color: rgba($pink,     .7) !important}
+.bg-alpha7-purple		{background-color: rgba($purple,   .7) !important}
+
+.bg-alpha9-primary      {background-color: rgba($blue,     .9) !important}
+.bg-alpha9-success    	{background-color: rgba($green,    .9) !important}
+.bg-alpha9-warning    	{background-color: rgba($yellow,   .9) !important}
+.bg-alpha9-danger    	{background-color: rgba($red,      .9) !important}
+.bg-alpha9-info	        {background-color: rgba($cyan, 	   .9) !important}
+.bg-alpha9-inverse 	    {background-color: rgba($gray-800, .9) !important}
+.bg-alpha9-gray-900 	{background-color: rgba($gray-900, .9) !important}
+.bg-alpha9-gray-800 	{background-color: rgba($gray-800, .9) !important}
+.bg-alpha9-gray-700 	{background-color: rgba($gray-700, .9) !important}
+.bg-alpha9-gray-600 	{background-color: rgba($gray-600, .9) !important}
+.bg-alpha9-gray-500 	{background-color: rgba($gray-500, .9) !important}
+.bg-alpha9-gray-400 	{background-color: rgba($gray-400, .9) !important}
+.bg-alpha9-gray-300 	{background-color: rgba($gray-300, .9) !important}
+.bg-alpha9-gray-200 	{background-color: rgba($gray-200, .9) !important}
+.bg-alpha9-gray-100 	{background-color: rgba($gray-100, .9) !important}
+.bg-alpha9-white	 	{background-color: rgba($white,    .9) !important}
+.bg-alpha9-black	  	{background-color: rgba($black,    .9) !important}
+.bg-alpha9-orange	    {background-color: rgba($orange,   .9) !important}
+.bg-alpha9-indigo	    {background-color: rgba($indigo,   .9) !important}
+.bg-alpha9-teal	    	{background-color: rgba($teal,     .9) !important}
+.bg-alpha9-pink	    	{background-color: rgba($pink,     .9) !important}
+.bg-alpha9-purple		{background-color: rgba($purple,   .9) !important}
+
+/*=============================================*/
+/* Social networks */
+/*=============================================*/
+.text-facebook		      {color: #3b5999;}
+.text-messenger		      {color: #0084ff;}
+.text-twitter		      {color: #55acee;}
+.text-linkedin		      {color: #0077B5;}
+.text-skype			      {color: #00AFF0;}
+.text-dropbox		      {color: #007ee5;}
+.text-wordpress		      {color: #21759b;}
+.text-vimeo			      {color: #1ab7ea;}
+.text-slideshare		  {color: #0077b5;}
+.text-vk				  {color: #4c75a3;}
+.text-tumblr			  {color: #34465d;}
+.text-yahoo			      {color: #410093;}
+.text-googleplus		  {color: #dd4b39;}
+.text-pinterest		      {color: #bd081c;}
+.text-youtube		      {color: #cd201f;}
+.text-stumbleupon	      {color: #eb4924;}
+.text-reddit			  {color: #ff5700;}
+.text-quora			      {color: #b92b27;}
+.text-yelp			      {color: #af0606;}
+.text-weibo			      {color: #df2029;}
+.text-producthunt	      {color: #da552f;}
+.text-hackernews		  {color: #ff6600;}
+.text-soundcloud		  {color: #ff3300;}
+.text-blogger		      {color: #f57d00;}
+.text-whatsapp		      {color: #25D366;}
+.text-wechat			  {color: #09b83e;}
+.text-line			      {color: #00c300;}
+.text-medium			  {color: #02b875;}
+.text-vine			      {color: #00b489;}
+.text-slack			      {color: #3aaf85;}
+.text-instagram		      {color: #e4405f;}
+.text-dribbble		      {color: #ea4c89;}
+.text-flickr			  {color: #ff0084;}
+.text-foursquare		  {color: #f94877;}
+.text-behance		      {color: #131418;}
+.text-snapchat		      {color: #FFFC00;}
+
+.bg-facebook		      {background-color: #3b5999;}
+.bg-messenger		      {background-color: #0084ff;}
+.bg-twitter		      	  {background-color: #55acee;}
+.bg-linkedin		      {background-color: #0077B5;}
+.bg-skype			      {background-color: #00AFF0;}
+.bg-dropbox		          {background-color: #007ee5;}
+.bg-wordpress		      {background-color: #21759b;}
+.bg-vimeo			      {background-color: #1ab7ea;}
+.bg-slideshare		      {background-color: #0077b5;}
+.bg-vk				      {background-color: #4c75a3;}
+.bg-tumblr			      {background-color: #34465d;}
+.bg-yahoo			      {background-color: #410093;}
+.bg-googleplus		      {background-color: #dd4b39;}
+.bg-pinterest		      {background-color: #bd081c;}
+.bg-youtube		          {background-color: #cd201f;}
+.bg-stumbleupon	          {background-color: #eb4924;}
+.bg-reddit			      {background-color: #ff5700;}
+.bg-quora			      {background-color: #b92b27;}
+.bg-yelp			      {background-color: #af0606;}
+.bg-weibo			      {background-color: #df2029;}
+.bg-producthunt	          {background-color: #da552f;}
+.bg-hackernews		      {background-color: #ff6600;}
+.bg-soundcloud		      {background-color: #ff3300;}
+.bg-blogger		          {background-color: #f57d00;}
+.bg-whatsapp		      {background-color: #25D366;}
+.bg-wechat			      {background-color: #09b83e;}
+.bg-line			      {background-color: #00c300;}
+.bg-medium			      {background-color: #02b875;}
+.bg-vine			      {background-color: #00b489;}
+.bg-slack			      {background-color: #3aaf85;}
+.bg-instagram		      {background-color: #e4405f;}
+.bg-dribbble		      {background-color: #ea4c89;}
+.bg-flickr			      {background-color: #ff0084;}
+.bg-foursquare		      {background-color: #f94877;}
+.bg-behance		          {background-color: #131418;}
+.bg-snapchat		      {background-color: #FFFC00;}
+
+/*=============================================*/
+/* EASING TRANSITION */
+/*=============================================*/
+.easing-transition {
+	-webkit-transition: all .5s ease-out;
+	-moz-transition: all .5s ease-out;
+	-o-transition: all .5s ease-out;
+	transition: all .5s ease-out;
+}
+
+/*=============================================*/
+/* OPACITY */
+/*=============================================*/
+.opacity-8 {opacity: 0.8}
+.opacity-5 {opacity: 0.5}
+
+/*=============================================*/
+/* WIDTH */
+/*=============================================*/
+.w-5px 		{width: 5px}
+.w-10px 	{width: 10px}
+.w-15px 	{width: 15px}
+.w-20px 	{width: 20px}
+.w-25px 	{width: 25px}
+.w-30px 	{width: 30px}
+.w-35px 	{width: 35px}
+.w-40px 	{width: 40px}
+.w-45px 	{width: 45px}
+.w-50px 	{width: 50px}
+.w-55px 	{width: 55px}
+.w-60px 	{width: 60px}
+.w-65px 	{width: 65px}
+.w-70px 	{width: 70px}
+.w-75px 	{width: 75px}
+.w-80px 	{width: 80px}
+.w-85px 	{width: 85px}
+.w-90px 	{width: 90px}
+.w-95px 	{width: 95px}
+.w-100px 	{width: 100px}
+/*=============================================*/
+/* HEIGHT */
+/*=============================================*/
+.h-5px 		{height: 5px}
+.h-10px 	{height: 10px}
+.h-15px 	{height: 15px}
+.h-20px 	{height: 20px}
+.h-25px 	{height: 25px}
+.h-30px 	{height: 30px}
+.h-35px 	{height: 35px}
+.h-40px 	{height: 40px}
+.h-45px 	{height: 45px}
+.h-50px 	{height: 50px}
+.h-55px 	{height: 55px}
+.h-60px 	{height: 60px}
+.h-65px 	{height: 65px}
+.h-70px 	{height: 70px}
+.h-75px 	{height: 75px}
+.h-80px 	{height: 80px}
+.h-85px 	{height: 85px}
+.h-90px 	{height: 90px}
+.h-95px 	{height: 95px}
+.h-100px 	{height: 100px}
+
+
+

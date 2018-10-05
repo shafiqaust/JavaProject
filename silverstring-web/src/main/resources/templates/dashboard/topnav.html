@@ -1,0 +1,94 @@
+<html>
+    <div th:fragment="topnav" >
+        <header id="topnav">
+            <div class="logo_contents">
+
+                <a  href="/dashboard">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="fs-1_9 ml-xs-10px" th:text="#{exchange.name}"></span>
+                </a>
+
+                <!-- Account -->
+                <div class="p-absolute h_account" th:if="${loginStatus}">
+                    <i role="main" class="fa fa-user-circle text-skype"  aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only text-skype" th:utext="#{dashboard.logout.btn} "></span></i><a href="/logout"><span class="text-skype fs-08" th:utext="#{dashboard.logout.btn}"></span></a>
+                </div>
+                <div class="p-absolute h_account" th:unless="${loginStatus}">
+                    <i role="main" class="fa fa-user-circle text-skype"  aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only text-skype" th:utext="#{login.btn}"></span></i><a href="/logout"><span class="text-skype fs-08" th:utext="#{login.btn}"></span></a>
+                </div>
+                <div class="dropdown account-bar p-absolute h_account_toggle pr-5">
+                    <span class="d-none dropdown-toggle d-md-inline-flex btn text-dark text-uppercase text-center py-10px fs-0_9 rd-5" id="language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language">
+                        <div class="col-lg-12" style="list-style:none;padding-left:0">
+                            <ul class="m-0 list-unstyled">
+                                <!--
+                                <li>
+                                    <a th:href="'?language=ko_KR&' + ${queryString}" class="dropdown-item">Korean</a>
+                                </li>
+                                -->
+                                <li>
+                                    <a th:href="'?language=en_US&' + ${queryString}" class="dropdown-item">English</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <!--
+                  Main nav
+                -->
+                <nav class="navbar align-items-center navbar-expand-lg">
+
+
+                    <!-- Responsive button -->
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+
+                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                        <ul class="navbar-nav justify-content-end mr-lg-5">
+                            <!--========== Pages ================-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link " href="/deposit_manage"><i class="fas fa-list"></i><span th:text="#{topnav.menu2.title}"></span></a>
+                                <!--
+                                <a class="nav-link " href="#"><i class="fas fa-list"></i><span th:text="#{topnav.menu2.title}"></span></a>
+                                -->
+                            </li>
+
+                            <!--========== Blog ================-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="/withdrawal_manage"><i class="fas fa-list"></i><span th:text="#{topnav.menu3.title}"></span></a>
+                                <!--
+                                <a class="nav-link" href="#"><i class="fas fa-list"></i><span th:text="#{topnav.menu3.title}"></span></a>
+                                -->
+                            </li>
+
+                            <!--========== Elements ===============-->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link" href="/" id="m_my" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user"></i><span th:text="#{topnav.menu6.title}"></span></a>
+                                <div class="dropdown-menu" aria-labelledby="m_my">
+                                    <div class="col-lg-12" style="list-style:none;padding-left:0">
+                                        <ul class="m-0 list-unstyled">
+                                            <li> <a href="/myinfo_manage" class="dropdown-item" th:text="#{topnav.menu6.title1}"></a> </li>
+                                            <li> <a href="/otp_manage" class="dropdown-item" th:text="#{topnav.menu6.title4}"></a> </li>
+                                            <!-- <li> <a href="/auth_manage" class="dropdown-item" th:text="#{topnav.menu6.title2}"></a> </li> -->
+                                            <li> <a href="/access_manage" class="dropdown-item" th:text="#{topnav.menu6.title3}"></a> </li>
+                                            <!--
+                                            <li> <a href="#" class="dropdown-item" th:text="#{topnav.menu6.title1}"></a> </li>
+                                            <li> <a href="#" class="dropdown-item" th:text="#{topnav.menu6.title4}"></a> </li>
+                                            <li> <a href="#" class="dropdown-item" th:text="#{topnav.menu6.title2}"></a> </li>
+                                            <li> <a href="#" class="dropdown-item" th:text="#{topnav.menu6.title3}"></a> </li>
+                                            -->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+</html>

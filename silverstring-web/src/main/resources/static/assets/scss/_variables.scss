@@ -1,0 +1,26 @@
+//
+// Custom variables for Bcoin
+//
+
+$text-color    :   #888888;
+$first-color   :   #66ccff;
+$second-color  :   #1f497d;
+$third-color   :   #1c1c1c;
+
+$darken-first-color  : darken($first-color,10);
+$darken-second-color : darken($second-color,10);
+$darken-third-color  : darken($third-color,10);
+
+@mixin radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($transition) {
+  -webkit-transition: all $transition;
+     -moz-transition: all $transition;
+      -ms-transition: all $transition;
+          transition: all $transition;
+}

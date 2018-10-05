@@ -1,0 +1,11 @@
+/*=============================================*/
+/* Blockquote */
+/*=============================================*/
+.blockquote {
+	&.blockquote-st-1 {
+		border-top: 2px solid $first-color;
+	}
+	&.blockquote-st-2 {
+		border-left: 2px solid $first-color;
+	}
+}
